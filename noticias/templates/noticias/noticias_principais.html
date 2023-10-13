@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notícias Principais</title>
+  </head>
+  <body>
+    <h1>Todas as notícias</h1>
+    <ul>
+      {% for noticia in noticias_principais %}
+      <li>
+        <a href="{% url 'noticias_principais' %}">{{ noticia.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
