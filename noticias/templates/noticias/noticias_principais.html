@@ -4,11 +4,26 @@
     <title>Notícias Principais</title>
   </head>
   <body>
-    <h1>Todas as notícias</h1>
+    <form method="get">
+      <label for="categoria">Filtrar por categoria:</label>
+      <select name="categoria" id="categoria" multiple>
+        <option value="sports">Esportes</option>
+        <option value="science">Ciência</option>
+        <!-- Adicione mais opções de categoria conforme necessário -->
+      </select>
+      <input type="submit" value="Filtrar" />
+    </form>
+
+    <h1>Notícias Principais</h1>
     <ul>
       {% for noticia in noticias_principais %}
       <li>
-        <a href="{% url 'noticias_principais' %}">{{ noticia.title }}</a>
+        <a href="{{ noticia.url }}"
+          >{{ noticia.title }}
+          <p>{{noticia.content}}</p>
+          <p>{{noticia.author}}</p>
+          <p>{{noticia.source.name}}</p>
+        </a>
       </li>
       {% endfor %}
     </ul>
