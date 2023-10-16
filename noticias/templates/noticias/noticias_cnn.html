@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notícias da CNN</title>
+</head>
+<body>
+    <h1>Notícias da CNN</h1>
+
+    <form method="get">
+        <label for="categoria">Filtrar por categoria:</label>
+        <select name="categoria" id="categoria" multiple>
+            <option value="sports">Esportes</option>
+            <option value="politics">Política</option>
+            <!-- Adicione mais opções de categoria conforme necessário -->
+        </select>
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <ul>
+        {% for noticia in cnn_noticias %}
+            <li><a href="{{ noticia.url }}">{{ noticia.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

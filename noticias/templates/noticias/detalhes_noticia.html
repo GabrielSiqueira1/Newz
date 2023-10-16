@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notícia Detalhada</title>
+</head>
+<body>
+    <h1>Detalhes da Notícia</h1>
+    {% if noticia %}
+        <h2>{{ noticia.title }}</h2>
+        <p>{{ noticia.content }}</p>
+        <a href="{{ noticia.url }}" target="_blank">Leia a notícia completa</a>
+    {% else %}
+        <p>Notícia não encontrada</p>
+    {% endif %}
+</body>
+</html>

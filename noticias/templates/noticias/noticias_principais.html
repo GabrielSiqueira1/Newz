@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Notícias Principais</title>
-  </head>
-  <body>
+</head>
+<body>
     <form method="get">
       <label for="categoria">Filtrar por categoria:</label>
       <select name="categoria" id="categoria" multiple>
@@ -13,19 +13,20 @@
       </select>
       <input type="submit" value="Filtrar" />
     </form>
-
     <h1>Notícias Principais</h1>
     <ul>
       {% for noticia in noticias_principais %}
-      <li>
-        <a href="{{ noticia.url }}"
-          >{{ noticia.title }}
-          <p>{{noticia.content}}</p>
-          <p>{{noticia.author}}</p>
-          <p>{{noticia.source.name}}</p>
-        </a>
-      </li>
+          <li>
+              <a href="{% url 'detalhes_noticia' noticia.title %}">{{ noticia.title }}</a>
+          </li>
       {% endfor %}
-    </ul>
-  </body>
+  </ul>
+  
+
+    <h2>Notícias da BBC</h2>
+    <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
+
+    <h2>Notícias da CNN</h2>
+    <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+</body>
 </html>
