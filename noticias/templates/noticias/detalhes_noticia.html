@@ -5,10 +5,10 @@
 </head>
 <body>
     <h1>Detalhes da Notícia</h1>
-    {% if noticia %}
-        <h2>{{ noticia.title }}</h2>
-        <p>{{ noticia.content }}</p>
-        <a href="{{ noticia.url }}" target="_blank">Leia a notícia completa</a>
+    {% if noticia_principal %}
+        <h2>{{ noticia_principal.title }}</h2>
+        <p>{{ noticia_principal.content }}</p>
+        <a href="{{ noticia_principal.url }}" target="_blank">Leia a notícia completa</a>
     {% else %}
         <p>Notícia não encontrada</p>
     {% endif %}
@@ -16,7 +16,7 @@
     <h2>Notícias Relacionadas</h2>
     <ul>
         {% for noticia in noticias_relacionadas %}
-            <li><a href="{{ noticia.url }}">{{ noticia.title }}</a></li>
+            <li><a href="{% url 'detalhes_noticia' noticia.url %}">{{ noticia.title }}</a></li>
         {% endfor %}
     </ul>
 </body>
