@@ -17,7 +17,7 @@
     <ul>
       {% for noticia in noticias_principais %}
           <li>
-              <a href="{% url 'detalhes_noticia' noticia.title %}">{{ noticia.title }}</a>
+              <a href="{% url 'detalhes_noticia' noticia.url %}">{{ noticia.title }}</a>
           </li>
       {% endfor %}
   </ul>

@@ -12,5 +12,12 @@
     {% else %}
         <p>Notícia não encontrada</p>
     {% endif %}
+
+    <h2>Notícias Relacionadas</h2>
+    <ul>
+        {% for noticia in noticias_relacionadas %}
+            <li><a href="{{ noticia.url }}">{{ noticia.title }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

@@ -1,20 +1,28 @@
 import requests
 from django.shortcuts import render
 
-def detalhes_noticia(request, title_noticia):
+def detalhes_noticia(request, url_noticia):
     # Recupere o título e o conteúdo da notícia com base no URL
     # Isso pode ser feito consultando a lista de notícias obtidas da API da News
     # Exemplo de consulta em uma lista de notícias
     noticias = obter_noticias_principais()  # Supondo que esta função obtenha as notícias principais
 
     # Encontre a notícia correspondente com base no URL
-    noticia = None
+    noticia_principal = None
     for n in noticias:
-        if n.get('title') == title_noticia:
-            noticia = n
+        if n.get('url') == url_noticia:
+            noticia_principal = n
             break
+        
+    # Adicione lógica para encontrar notícias relacionadas (exemplo: notícias da mesma categoria)
+    noticias_relacionadas = []
+    for n in noticias:
+        if n.get('source.name') == noticia_principal.get('source.name') and n.get('url') != url_noticia:
+            noticias_relacionadas.append(n)
+            
+    noticias_relacionadas = noticias_relacionadas[:3]
 
-    return render(request, 'noticias/detalhes_noticia.html', {'noticia': noticia})
+    return render(request, 'noticias/detalhes_noticia.html', {'noticia_principal': noticia_principal, 'noticias_relacionadas': noticias_relacionadas})
 
 def obter_noticias_da_bbc():
     # Substitua 'YOUR_API_KEY' pela chave da sua conta na News API
