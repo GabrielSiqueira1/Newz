@@ -1,30 +1,7 @@
 import requests
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from .models import Comentario
-from .forms import ComentarioForm
-
-def adicionar_comentario(request, url_noticia):
-    # Encontre a notícia com base na URL (conforme descrito anteriormente)
-    noticias = obter_noticias_principais()  # Supondo que esta função obtenha as notícias principais
-
-    # Encontre a notícia correspondente com base no URL
-    noticia = None
-    for n in noticias:
-        if n.get('url') == url_noticia:
-            noticia = n
-            break
-
-    if request.method == 'POST':
-        form = ComentarioForm(request.POST)
-        if form.is_valid():
-            texto = form.cleaned_data['texto']
-            Comentario.objects.create(texto=texto, noticia=noticia)
-            return redirect('detalhes_noticia', url_noticia=url_noticia)
-    else:
-        form = ComentarioForm()
-
-    return render(request, 'noticias/comentario_form.html', {'form': form})
-
+from .forms import ComentarioForm   
 
 def detalhes_noticia(request, url_noticia):
     # Recupere o título e o conteúdo da notícia com base no URL
@@ -46,8 +23,21 @@ def detalhes_noticia(request, url_noticia):
             noticias_relacionadas.append(n)
             
     noticias_relacionadas = noticias_relacionadas[:3]
+    
+    comentarios = Comentario.objects.filter(url_noticia=url_noticia)
+    
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            texto = form.cleaned_data['texto']
 
-    return render(request, 'noticias/detalhes_noticia.html', {'noticia_principal': noticia_principal, 'noticias_relacionadas': noticias_relacionadas})
+            # Crie um novo comentário associado à notícia com base no URL
+            Comentario.objects.create(texto=texto, url_noticia=url_noticia)
+            
+            # Redirecione de volta à página de detalhes da notícia
+            return HttpResponseRedirect(request.path_info)
+
+    return render(request, 'noticias/detalhes_noticia.html', {'noticia_principal': noticia_principal, 'noticias_relacionadas': noticias_relacionadas, 'comentarios': comentarios, 'form': ComentarioForm()})
 
 def obter_noticias_da_bbc():
     # Substitua 'YOUR_API_KEY' pela chave da sua conta na News API

@@ -23,15 +23,22 @@
 
     <h2>Comentários</h2>
     <ul>
-        {% for comentario in noticia_principal.comentario_set.all %}
-            <li>{{ comentario.texto }}</li>
-        {% empty %}
-            <li>Nenhum comentário disponível.</li>
-        {% endfor %}
+        {% if comentarios %}
+            {% for comentario in comentarios %}
+                <li>{{ comentario.texto }} ({{ comentario.data_hora|date:"Y-m-d H:i:s" }})
+            {% endfor %}
+        {% else %}
+            <p>Nenhum comentário disponível.</p>
+        {% endif %}
     </ul>
 
-    <h2>Adicionar Comentário</h2>
-    {% include 'noticias/comentario_form.html' %}
+    <h2>Adicionar Comentário</h2> 
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar Comentário</button>
+    </form>
+
     
 </body>
 </html>
