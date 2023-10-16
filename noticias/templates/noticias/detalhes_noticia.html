@@ -4,6 +4,7 @@
     <title>Notícia Detalhada</title>
 </head>
 <body>
+    
     <h1>Detalhes da Notícia</h1>
     {% if noticia_principal %}
         <h2>{{ noticia_principal.title }}</h2>
@@ -19,5 +20,18 @@
             <li><a href="{% url 'detalhes_noticia' noticia.url %}">{{ noticia.title }}</a></li>
         {% endfor %}
     </ul>
+
+    <h2>Comentários</h2>
+    <ul>
+        {% for comentario in noticia_principal.comentario_set.all %}
+            <li>{{ comentario.texto }}</li>
+        {% empty %}
+            <li>Nenhum comentário disponível.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Adicionar Comentário</h2>
+    {% include 'noticias/comentario_form.html' %}
+    
 </body>
 </html>

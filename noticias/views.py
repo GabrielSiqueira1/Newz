@@ -1,5 +1,30 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Comentario
+from .forms import ComentarioForm
+
+def adicionar_comentario(request, url_noticia):
+    # Encontre a notícia com base na URL (conforme descrito anteriormente)
+    noticias = obter_noticias_principais()  # Supondo que esta função obtenha as notícias principais
+
+    # Encontre a notícia correspondente com base no URL
+    noticia = None
+    for n in noticias:
+        if n.get('url') == url_noticia:
+            noticia = n
+            break
+
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            texto = form.cleaned_data['texto']
+            Comentario.objects.create(texto=texto, noticia=noticia)
+            return redirect('detalhes_noticia', url_noticia=url_noticia)
+    else:
+        form = ComentarioForm()
+
+    return render(request, 'noticias/comentario_form.html', {'form': form})
+
 
 def detalhes_noticia(request, url_noticia):
     # Recupere o título e o conteúdo da notícia com base no URL
