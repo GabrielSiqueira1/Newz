@@ -5,14 +5,26 @@
 </head>
 <body>
     <form method="get">
-      <label for="categoria">Filtrar por categoria:</label>
-      <select name="categoria" id="categoria" multiple>
-        <option value="sports">Esportes</option>
+      <label for="categoria">Categorias</label>
+      <select name="categoria" id="categoria">
+        <option value="business">Empreendedorismo</option>
+        <option value="entertainment">Entretenimento</option>
+        <option value="health">Saúde</option>
         <option value="science">Ciência</option>
-        <!-- Adicione mais opções de categoria conforme necessário -->
+        <option value="sports">Esportes</option>
+        <option value="technology">Tecnologia</option>
       </select>
       <input type="submit" value="Filtrar" />
     </form>
+
+    <div>
+      <button>Jornais</button>
+      <div>
+        <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
+        <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+      </div>
+    </div>
+
     <h1>Notícias Principais</h1>
     <ul>
       {% for noticia in noticias_principais %}
@@ -21,12 +33,5 @@
           </li>
       {% endfor %}
   </ul>
-  
-
-    <h2>Notícias da BBC</h2>
-    <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
-
-    <h2>Notícias da CNN</h2>
-    <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
 </body>
 </html>

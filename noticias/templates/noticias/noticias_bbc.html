@@ -5,17 +5,6 @@
 </head>
 <body>
     <h1>Notícias da BBC</h1>
-
-    <form method="get">
-        <label for="categoria">Filtrar por categoria:</label>
-        <select name="categoria" id="categoria" multiple>
-            <option value="sports">Esportes</option>
-            <option value="politics">Política</option>
-            <!-- Adicione mais opções de categoria conforme necessário -->
-        </select>
-        <input type="submit" value="Filtrar">
-    </form>
-
     <ul>
         {% for noticia in bbc_noticias %}
             <li><a href="{% url 'detalhes_noticia' noticia.id %}">{{ noticia.title }}</a></li>
