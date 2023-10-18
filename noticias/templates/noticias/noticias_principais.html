@@ -4,26 +4,29 @@
     <title>Notícias Principais</title>
 </head>
 <body>
+  <nav>
+    <a href="./noticias_principais.html">Home</a>
     <form method="get">
-      <label for="categoria">Categorias</label>
-      <select name="categoria" id="categoria">
-        <option value="business">Empreendedorismo</option>
-        <option value="entertainment">Entretenimento</option>
-        <option value="health">Saúde</option>
-        <option value="science">Ciência</option>
-        <option value="sports">Esportes</option>
-        <option value="technology">Tecnologia</option>
-      </select>
-      <input type="submit" value="Filtrar" />
-    </form>
-
-    <div>
-      <button>Jornais</button>
+        <label for="categoria">Categorias</label>
+        <select name="categoria" id="categoria">
+          <option value="business">Empreendedorismo</option>
+          <option value="entertainment">Entretenimento</option>
+          <option value="health">Saúde</option>
+          <option value="science">Ciência</option>
+          <option value="sports">Esportes</option>
+          <option value="technology">Tecnologia</option>
+        </select>
+        <input type="submit" value="Filtrar" />
+      </form>
+  
       <div>
-        <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
-        <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+        <button>Jornais</button>
+        <div>
+          <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
+          <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+        </div>
       </div>
-    </div>
+  </nav>
 
     <h1>Notícias Principais</h1>
     <ul>

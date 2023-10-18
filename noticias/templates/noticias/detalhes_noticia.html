@@ -4,16 +4,51 @@
     <title>Notícia Detalhada</title>
 </head>
 <body>
+    <nav>
+        <a href="./noticias_principais.html">Home</a>
+        <form method="get">
+            <label for="categoria">Categorias</label>
+            <select name="categoria" id="categoria">
+              <option value="business">Empreendedorismo</option>
+              <option value="entertainment">Entretenimento</option>
+              <option value="health">Saúde</option>
+              <option value="science">Ciência</option>
+              <option value="sports">Esportes</option>
+              <option value="technology">Tecnologia</option>
+            </select>
+            <input type="submit" value="Filtrar" />
+          </form>
+      
+          <div>
+            <button>Jornais</button>
+            <div>
+              <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
+              <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+            </div>
+          </div>
+    </nav>
     
     <h1>Detalhes da Notícia</h1>
     {% if noticia_principal %}
         <h2>{{ noticia_principal.title }}</h2>
+        
+        {% load gTTS %}
+
+        <audio
+            src="{% say 'en-us' 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas' %}"
+            controls
+        ></audio>
+
+
+        <h3>{{ noticia_principal.description }}</h3>
+        <p>{{noticia_principal.publishedAt}}</p>
         <p>{{ noticia_principal.content }}</p>
         <a href="{{ noticia_principal.url }}" target="_blank">Leia a notícia completa</a>
     {% else %}
         <p>Notícia não encontrada</p>
     {% endif %}
 
+    <p>Compartilhe: </p>
     <h2>Notícias Relacionadas</h2>
     <ul>
         {% for noticia in noticias_relacionadas %}
