@@ -6,7 +6,7 @@
 <body>
 
     <nav>
-        <a href="./noticias_principais.html">Home</a>
+        <a href="{% url 'noticias_principais' %}">Home</a>
         <form method="get">
             <label for="categoria">Categorias</label>
             <select name="categoria" id="categoria">
@@ -27,6 +27,20 @@
               <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
             </div>
           </div>
+
+
+          {% if user.is_authenticated %}
+          <!-- Exibir informações para usuários autenticados -->
+          Olá, {{ user.username }}! <a href="{% url 'logout' %}">Sair</a>
+      {% else %}
+          <!-- Exibir formulário de login para usuários não autenticados -->
+          <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Entrar</button>
+          </form>
+          <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
+      {% endif %}
       </nav>
     <h1>Notícias da BBC</h1>
     <ul>

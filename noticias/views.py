@@ -2,6 +2,30 @@ import requests
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from .models import Comentario
 from .forms import ComentarioForm   
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def pagina_de_login(request):
+    return redirect('noticias_principais')
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Autentica o usuário automaticamente após o registro
+            return HttpResponseRedirect(reverse('noticias_principais')) # Redireciona para a página inicial após o registro
+
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'registration/signup.html', {'form': form})
 
 def detalhes_noticia(request, url_noticia):
     # Recupere o título e o conteúdo da notícia com base no URL
