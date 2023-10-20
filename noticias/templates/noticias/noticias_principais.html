@@ -29,7 +29,7 @@
 
           {% if user.is_authenticated %}
                 <!-- Exibir informações para usuários autenticados -->
-                Olá, {{ user.username }}! <a href="{% url 'logout' %}">Sair</a>
+                Olá, {{ user.username }}! <a href="{% url 'custom_logout' %}">Sair</a>
             {% else %}
                 <!-- Exibir formulário de login para usuários não autenticados -->
                 <form method="post" action="{% url 'login' %}">
