@@ -60,7 +60,11 @@ def detalhes_noticia(request, url_noticia):
             texto = form.cleaned_data['texto']
 
             # Crie um novo comentário associado à notícia com base no URL
-            Comentario.objects.create(texto=texto, url_noticia=url_noticia)
+            if request.user.is_authenticated:
+                Comentario.objects.create(texto=texto, url_noticia=url_noticia, autor=request.user)
+            else:
+                # Usuário não autenticado, criar comentário anônimo
+                Comentario.objects.create(texto=texto, url_noticia=url_noticia, anonimo=True)
             
             # Redirecione de volta à página de detalhes da notícia
             return HttpResponseRedirect(request.path_info)

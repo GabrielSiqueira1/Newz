@@ -2,6 +2,11 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+from django import forms
+from .models import Comentario
+
+class ComentarioForm(forms.ModelForm):
+     texto = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Escreva seu comentário aqui'}))
 
 class CustomUserCreationForm(UserCreationForm):
     full_name = forms.CharField(max_length=150, label='Nome Completo')
@@ -12,7 +17,7 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
         help_text="A senha deve conter no mínimo 6 caracteres."
     )
-    password2 = None  # Desativar a confirmação de senha
+    password2 = None 
 
     class Meta:
         model = User

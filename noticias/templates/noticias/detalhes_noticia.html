@@ -62,19 +62,23 @@
 
     <h2>Comentários</h2>
     <ul>
-        {% if comentarios %}
-            {% for comentario in comentarios %}
-                <li>{{ comentario.texto }} ({{ comentario.data_hora|date:"Y-m-d H:i:s" }})
-            {% endfor %}
-        {% else %}
-            <p>Nenhum comentário disponível.</p>
-        {% endif %}
+        {% for comentario in comentarios %}
+            <div class="comentario">
+                <p>{{ comentario.texto }}</p>
+                {% if comentario.autor %}
+                    <p>Por: {{ comentario.autor.username }}</p>
+                {% elif comentario.anonimo %}
+                    <p>Comentário Anônimo</p>
+                {% endif %}
+            </div>
+        {% endfor %}
     </ul>
 
     <h2>Adicionar Comentário</h2> 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.texto.label_tag }}
+        {{ form.texto }}
         <button type="submit">Enviar Comentário</button>
     </form>
     <script>
