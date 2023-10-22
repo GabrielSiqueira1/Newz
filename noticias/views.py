@@ -7,8 +7,19 @@ from django.contrib.auth import login, logout, authenticate
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .forms import CustomUserCreationForm
-
 from django.contrib.auth.decorators import login_required
+from .models import Noticia
+from .forms import PesquisaForm
+
+
+def resultados_pesquisa(request):
+    query = request.GET.get('q')
+    noticias = obter_noticias_principais()
+    resultados = []
+    for n in noticias:
+        if query in n.get('title'):
+            resultados.append(n)
+    return render(request, 'noticias/resultados_pesquisa.html', {'resultados': resultados, 'query': query})
 
 @login_required
 def pagina_de_login(request):
@@ -110,6 +121,7 @@ def obter_noticias_principais(categorias=[]):
     params = {
         'apiKey': api_key,
         'category': ','.join(categorias), 
+        'pageSize': 100,
     }
     response = requests.get(url, params=params)
 
@@ -122,7 +134,7 @@ def obter_noticias_principais(categorias=[]):
 def noticias_principais(request):
     categorias = request.GET.getlist('categoria')
     # Recupere as notícias principais (de todas as fontes)
-    noticias_principais = obter_noticias_principais(categorias)
+    noticias_principais = obter_noticias_principais(categorias) 
 
     return render(request, 'noticias/noticias_principais.html', {'noticias_principais': noticias_principais, 'categorias': categorias})
 

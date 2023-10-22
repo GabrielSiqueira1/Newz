@@ -39,6 +39,16 @@
                 </form>
                 <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
             {% endif %}
+
+        <div>
+          
+          <form method="GET" action="{% url 'resultados_pesquisa' %}">
+            <input type="text" name="q" placeholder="Pesquisar notícias">
+            <button type="submit">Pesquisar</button>
+        </form>
+        
+
+        </div>
   </nav>
 
     <h1>Notícias Principais</h1>
