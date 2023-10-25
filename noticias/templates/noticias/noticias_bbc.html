@@ -40,7 +40,11 @@
     <h1>Notícias da BBC</h1>
     <ul>
       {% for noticia in bbc_noticias %}
-      <li><a href="{{ noticia.url }}">{{ noticia.title }}</a></li>
+      <li>
+        <a href="{% url 'detalhes_noticia' noticia.url %}"
+          >{{ noticia.title }}</a
+        >
+      </li>
       {% endfor %}
     </ul>
   </body>

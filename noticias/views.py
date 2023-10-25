@@ -48,6 +48,24 @@ def detalhes_noticia(request, url_noticia):
             noticia_principal = n
             break
         
+    if noticia_principal == None:
+        noticias = obter_noticias_da_bbc() 
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get('url') == url_noticia:
+                noticia_principal = n
+                break
+            
+    if noticia_principal == None:
+        noticias = obter_noticias_da_cnn() 
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get('url') == url_noticia:
+                noticia_principal = n
+                break
+        
     noticias_relacionadas = []
     for n in noticias:
         if n.get('source.name') == noticia_principal.get('source.name') and n.get('url') != url_noticia:
