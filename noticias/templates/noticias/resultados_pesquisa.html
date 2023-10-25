@@ -4,6 +4,17 @@
     <title>Resultados da Pesquisa</title>
   </head>
   <body>
+    <nav>
+      <form method="get" action="{% url 'resultados_pesquisa' %}">
+        <input type="text" name="q" value="{{ query }}" />
+        <button type="submit">Pesquisar</button>
+        <label for="ordenar">Ordenar por:</label>
+        <select name="ordenar" id="ordenar">
+          <option value="asc">Mais antigos primeiro</option>
+          <option value="desc">Mais recentes primeiro</option>
+        </select>
+      </form>
+    </nav>
     <h2>Resultados da Pesquisa para "{{ query }}"</h2>
     <ul>
       {% for noticia in resultados %}
