@@ -1,50 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Notícias da CNN</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
       <a href="{% url 'noticias_principais' %}">Home</a>
-        <form method="get">
-            <label for="categoria">Categorias</label>
-            <select name="categoria" id="categoria">
-              <option value="business">Empreendedorismo</option>
-              <option value="entertainment">Entretenimento</option>
-              <option value="health">Saúde</option>
-              <option value="science">Ciência</option>
-              <option value="sports">Esportes</option>
-              <option value="technology">Tecnologia</option>
-            </select>
-            <input type="submit" value="Filtrar" />
-          </form>
-      
-          <div>
-            <button>Jornais</button>
-            <div>
-              <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
-              <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
-            </div>
-          </div>
+      <form method="get">
+        <label for="categoria">Categorias</label>
+        <select name="categoria" id="categoria">
+          <option value="business">Empreendedorismo</option>
+          <option value="entertainment">Entretenimento</option>
+          <option value="health">Saúde</option>
+          <option value="science">Ciência</option>
+          <option value="sports">Esportes</option>
+          <option value="technology">Tecnologia</option>
+        </select>
+        <input type="submit" value="Filtrar" />
+      </form>
 
-          {% if user.is_authenticated %}
-          <!-- Exibir informações para usuários autenticados -->
-          Olá, {{ user.username }}! <a href="{% url 'logout' %}">Sair</a>
+      <div>
+        <button>Jornais</button>
+        <div>
+          <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
+          <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+        </div>
+      </div>
+
+      {% if user.is_authenticated %} Olá, {{ user.username }}!
+      <a href="{% url 'logout' %}">Sair</a>
       {% else %}
-          <!-- Exibir formulário de login para usuários não autenticados -->
-          <form method="post" action="{% url 'login' %}">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit">Entrar</button>
-          </form>
-          <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Entrar</button>
+      </form>
+      <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
       {% endif %}
-      </nav>
+    </nav>
     <h1>Notícias da CNN</h1>
     <ul>
-        {% for noticia in cnn_noticias %}
-            <li><a href="{{ noticia.url }}">{{ noticia.title }}</a></li>
-        {% endfor %}
+      {% for noticia in cnn_noticias %}
+      <li><a href="{{ noticia.url }}">{{ noticia.title }}</a></li>
+      {% endfor %}
     </ul>
-</body>
+  </body>
 </html>

@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Registro</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Registro</h1>
 
     <form method="post">
-        {% csrf_token %}
-        {{ form.full_name.label_tag }} {{ form.full_name }}
-        {{ form.username.label_tag }} {{ form.username }}
-        {{ form.email.label_tag }} {{ form.email }}
-        {{ form.password1.label_tag }} {{ form.password1 }}
-        <button type="submit">Registre-se</button>
+      {% csrf_token %} {{ form.full_name.label_tag }} {{ form.full_name }} {{
+      form.username.label_tag }} {{ form.username }} {{ form.email.label_tag }}
+      {{ form.email }} {{ form.password1.label_tag }} {{ form.password1 }}
+      <button type="submit">Registre-se</button>
     </form>
-    
-</body>
+  </body>
 </html>

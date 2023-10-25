@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Notícias Principais</title>
-</head>
-<body>
-  <nav>
-    <a href="{% url 'noticias_principais' %}">Home</a>
-    <form method="get">
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'noticias_principais' %}">Home</a>
+      <form method="get">
         <label for="categoria">Categorias</label>
         <select name="categoria" id="categoria">
           <option value="business">Empreendedorismo</option>
@@ -18,7 +18,7 @@
         </select>
         <input type="submit" value="Filtrar" />
       </form>
-  
+
       <div>
         <button>Jornais</button>
         <div>
@@ -27,37 +27,33 @@
         </div>
       </div>
 
-          {% if user.is_authenticated %}
-                <!-- Exibir informações para usuários autenticados -->
-                Olá, {{ user.username }}! <a href="{% url 'custom_logout' %}">Sair</a>
-            {% else %}
-                <!-- Exibir formulário de login para usuários não autenticados -->
-                <form method="post" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Entrar</button>
-                </form>
-                <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
-            {% endif %}
+      {% if user.is_authenticated %} Olá, {{ user.username }}!
+      <a href="{% url 'custom_logout' %}">Sair</a>
+      {% else %}
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Entrar</button>
+      </form>
+      <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
+      {% endif %}
 
-        <div>
-          
-          <form method="GET" action="{% url 'resultados_pesquisa' %}">
-            <input type="text" name="q" placeholder="Pesquisar notícias">
-            <button type="submit">Pesquisar</button>
+      <div>
+        <form method="GET" action="{% url 'resultados_pesquisa' %}">
+          <input type="text" name="q" placeholder="Pesquisar notícias" />
+          <button type="submit">Pesquisar</button>
         </form>
-        
-
-        </div>
-  </nav>
+      </div>
+    </nav>
 
     <h1>Notícias Principais</h1>
     <ul>
       {% for noticia in noticias_principais %}
-          <li>
-              <a href="{% url 'detalhes_noticia' noticia.url %}">{{ noticia.title }}</a>
-          </li>
+      <li>
+        <a href="{% url 'detalhes_noticia' noticia.url %}"
+          >{{ noticia.title }}</a
+        >
+      </li>
       {% endfor %}
-  </ul>
-</body>
+    </ul>
+  </body>
 </html>

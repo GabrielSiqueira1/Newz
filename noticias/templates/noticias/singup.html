@@ -1,15 +1,13 @@
-
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Registro</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Registro</h1>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrar</button>
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Registrar</button>
     </form>
-</body>
+  </body>
 </html>

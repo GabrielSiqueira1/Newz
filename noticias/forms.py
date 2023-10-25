@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django import forms
-from .models import Comentario
 
 class PesquisaForm(forms.Form):
     palavras_chave = forms.CharField(max_length=100, label='Palavras-chave')

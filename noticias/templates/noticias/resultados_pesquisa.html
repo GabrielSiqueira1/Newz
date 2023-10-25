@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Resultados da Pesquisa</title>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Resultados da Pesquisa para "{{ query }}"</h2>
     <ul>
-        {% for noticia in resultados %}
-            <li>
-                <a href="{% url 'detalhes_noticia' noticia.url %}">{{ noticia.title }}</a>
-            </li>
-        {% endfor %}
+      {% for noticia in resultados %}
+      <li>
+        <a href="{% url 'detalhes_noticia' noticia.url %}"
+          >{{ noticia.title }}</a
+        >
+      </li>
+      {% endfor %}
     </ul>
     {% if not resultados %}
-        <p>Nenhum resultado encontrado para "{{ query }}"</p>
+    <p>Nenhum resultado encontrado para "{{ query }}"</p>
     {% endif %}
-</body>
+  </body>
 </html>

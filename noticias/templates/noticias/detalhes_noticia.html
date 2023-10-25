@@ -1,100 +1,99 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Notícia Detalhada</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <a href="{% url 'noticias_principais' %}">Home</a>
-        <form method="get">
-            <label for="categoria">Categorias</label>
-            <select name="categoria" id="categoria">
-              <option value="business">Empreendedorismo</option>
-              <option value="entertainment">Entretenimento</option>
-              <option value="health">Saúde</option>
-              <option value="science">Ciência</option>
-              <option value="sports">Esportes</option>
-              <option value="technology">Tecnologia</option>
-            </select>
-            <input type="submit" value="Filtrar" />
-          </form>
-      
-          <div>
-            <button>Jornais</button>
-            <div>
-              <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
-              <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
-            </div>
-          </div>
+      <a href="{% url 'noticias_principais' %}">Home</a>
+      <form method="get">
+        <label for="categoria">Categorias</label>
+        <select name="categoria" id="categoria">
+          <option value="business">Empreendedorismo</option>
+          <option value="entertainment">Entretenimento</option>
+          <option value="health">Saúde</option>
+          <option value="science">Ciência</option>
+          <option value="sports">Esportes</option>
+          <option value="technology">Tecnologia</option>
+        </select>
+        <input type="submit" value="Filtrar" />
+      </form>
 
-            {% if user.is_authenticated %}
-                <!-- Exibir informações para usuários autenticados -->
-                Olá, {{ user.username }}! <a href="{% url 'custom_logout' %}">Sair</a>
-            {% else %}
-                <!-- Exibir formulário de login para usuários não autenticados -->
-                <form method="post" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    <button type="submit">Entrar</button>
-                </form>
-                <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
-            {% endif %}
+      <div>
+        <button>Jornais</button>
+        <div>
+          <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
+          <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+        </div>
+      </div>
+
+      {% if user.is_authenticated %} Olá, {{ user.username }}!
+      <a href="{% url 'custom_logout' %}">Sair</a>
+      {% else %}
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <button type="submit">Entrar</button>
+      </form>
+      <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
+      {% endif %}
     </nav>
-    
+
     <h1>Detalhes da Notícia</h1>
     {% if noticia_principal %}
-        <h2>{{ noticia_principal.title }}</h2>
-        <h3>{{ noticia_principal.description }}</h3>
-        <p>{{noticia_principal.publishedAt}}</p>
-        <a href="#" id="tts-button">Ouça a notícia</a>
-        <p>{{ noticia_principal.content }}</p>
-        <a href="{{ noticia_principal.url }}" target="_blank">Leia a notícia completa</a>
+    <h2>{{ noticia_principal.title }}</h2>
+    <h3>{{ noticia_principal.description }}</h3>
+    <p>{{noticia_principal.publishedAt}}</p>
+    <a href="#" id="tts-button">Ouça a notícia</a>
+    <p>{{ noticia_principal.content }}</p>
+    <a href="{{ noticia_principal.url }}" target="_blank"
+      >Leia a notícia completa</a
+    >
     {% else %}
-        <p>Notícia não encontrada</p>
+    <p>Notícia não encontrada</p>
     {% endif %}
 
-    <p>Compartilhe: </p>
+    <p>Compartilhe:</p>
     <h2>Notícias Relacionadas</h2>
     <ul>
-        {% for noticia in noticias_relacionadas %}
-            <li><a href="{% url 'detalhes_noticia' noticia.url %}">{{ noticia.title }}</a></li>
-        {% endfor %}
+      {% for noticia in noticias_relacionadas %}
+      <li>
+        <a href="{% url 'detalhes_noticia' noticia.url %}"
+          >{{ noticia.title }}</a
+        >
+      </li>
+      {% endfor %}
     </ul>
 
     <h2>Comentários</h2>
     <ul>
-        {% for comentario in comentarios %}
-            <div class="comentario">
-                <p>{{ comentario.texto }}</p>
-                {% if comentario.autor %}
-                    <p>Por: {{ comentario.autor.username }}</p>
-                {% elif comentario.anonimo %}
-                    <p>Comentário Anônimo</p>
-                {% endif %}
-            </div>
-        {% endfor %}
+      {% for comentario in comentarios %}
+      <div class="comentario">
+        <p>{{ comentario.texto }}</p>
+        {% if comentario.autor %}
+        <p>Por: {{ comentario.autor.username }}</p>
+        {% elif comentario.anonimo %}
+        <p>Comentário Anônimo</p>
+        {% endif %}
+      </div>
+      {% endfor %}
     </ul>
 
-    <h2>Adicionar Comentário</h2> 
+    <h2>Adicionar Comentário</h2>
     <form method="post">
-        {% csrf_token %}
-        {{ form.texto.label_tag }}
-        {{ form.texto }}
-        <button type="submit">Enviar Comentário</button>
+      {% csrf_token %} {{ form.texto.label_tag }} {{ form.texto }}
+      <button type="submit">Enviar Comentário</button>
     </form>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        var ttsButton = document.getElementById('tts-button');
+      document.addEventListener("DOMContentLoaded", function () {
+        var ttsButton = document.getElementById("tts-button");
         var noticiaContent = "{{ noticia_principal.content|escapejs }}";
-    
-        ttsButton.addEventListener('click', function() {
-            // Use o gTTS para gerar a leitura em TTS e reproduzir
-            var speech = new SpeechSynthesisUtterance(noticiaContent);
-            speech.lang = 'en';
-            window.speechSynthesis.speak(speech);
-        });
-    });
-    </script>
 
-    
-</body>
+        ttsButton.addEventListener("click", function () {
+          var speech = new SpeechSynthesisUtterance(noticiaContent);
+          speech.lang = "en";
+          window.speechSynthesis.speak(speech);
+        });
+      });
+    </script>
+  </body>
 </html>
