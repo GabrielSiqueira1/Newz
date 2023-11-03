@@ -1,59 +1,151 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Notícias Principais</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <nav>
-      <a href="{% url 'noticias_principais' %}">Home</a>
-      <form method="get">
-        <label for="categoria">Categorias</label>
-        <select name="categoria" id="categoria">
-          <option value="business">Empreendedorismo</option>
-          <option value="entertainment">Entretenimento</option>
-          <option value="health">Saúde</option>
-          <option value="science">Ciência</option>
-          <option value="sports">Esportes</option>
-          <option value="technology">Tecnologia</option>
-        </select>
-        <input type="submit" value="Filtrar" />
-      </form>
-
+    <nav style="position: relative; z-index: 1">
       <div>
-        <button>Jornais</button>
-        <div>
-          <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
-          <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+        <a style="text-decoration: none;
+        float: left;
+        margin-right: 40px;
+        margin-left: 125px;
+        margin-top: 60px;
+        margin-bottom: 50px;
+        color: black; 
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 50px;" 
+        href="{% url 'noticias_principais' %}">
+          <img src="figuras/newz-preto.png" alt="Ícone" class="icon" style="width: 94.81px; height: 85px; vertical-align: middle; margin-top: -15px; margin-right: -20px">
+          newz
+        </a>
+      </div>
+
+      <div class="left-div" style="margin-right: 40px;">
+        <div class="dropdown">
+          <button class="dropbtn" style="font-family: 'Jost', sans-serif; font-weight: bold; font-size: 20px;">Jornais</button>
+            <div class="dropdown-content">
+              <a href="{% url 'noticias_bbc' %}">BBC</a>
+              <a href="{% url 'noticias_cnn' %}">CNN</a>
+            </div>
+            <img src="figuras/dropdown.png" alt="Ícone2" class="icon2" style="width: 15px; height: 15px; vertical-align: middle;">
         </div>
       </div>
 
-      {% if user.is_authenticated %} Olá, {{ user.username }}!
-      <a href="{% url 'custom_logout' %}">Sair</a>
-      {% else %}
-      <form method="post" action="{% url 'login' %}">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit">Entrar</button>
-      </form>
-      <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
-      {% endif %}
+      <div class="left-div" style="margin-right: 40px;">
+        <div class="dropdown">
+          <button class="dropbtn" style="font-family: 'Jost', sans-serif; font-weight: bold; font-size: 20px;">Categorias</button>
+            <div class="dropdown-content">
+              <a href="{% static 'noticias_ciencia.html' %}">Ciência</a>
+              <a href="{% static 'noticias_empreendedorismo.html' %}">Empreendedorismo</a>
+              <a href="{% static 'noticias_esportes.html' %}">Esportes</a>
+              <a href="{% static 'noticias_entretenimento.html' %}">Entretenimento</a>
+              <a href="{% static 'noticias_saude.html' %}">Saúde</a>
+              <a href="{% static 'noticias_tecnologia.html' %}">Tecnologia</a>
+            </div>
+            <img src="figuras/dropdown.png" alt="Ícone2" class="icon2" style="width: 15px; height: 15px; vertical-align: middle;">
+        </div>
+      </div>
 
-      <div>
+      {% if user.is_authenticated %}
+      <div class="right-div">Olá, {{ user.username }}! <a href="{% url 'custom_logout' %}">Sair</a></div>
+      {% else %}
+      <div class="right-div">
+        <form method="post" action="{% url 'login' %}" style="display: inline;">
+          {% csrf_token %} {{ form.as_p }}
+          <button style="background: none; 
+          border: none;
+          border-radius: 5px;
+          height: 40px;
+          width: 80px;
+          cursor: pointer; 
+          margin-left: 30px; 
+          margin-right: 10px;
+          font-size: 20px; 
+          font-family: 'Jost', 
+          sans-serif; 
+          font-weight: bold;" 
+          type="submit"
+          onmouseover="this.style.backgroundColor='rgb(167, 167, 167)';"
+          onmouseout="this.style.backgroundColor='white';">
+            Entrar
+          </button>
+        </form>
+        <p style="display: inline; margin-right: 150px;">
+          <button style="cursor: pointer; 
+            font-family: 'Jost', sans-serif;
+            font-size: 20px; 
+            font-weight: bold;
+            border-radius: 5px;
+            height: 50px;
+            width: 150px;
+            margin-top: -10px;
+            border-width: 0px;
+            background-color: aquamarine"
+            onmouseover="this.style.backgroundColor='rgb(38, 209, 152)';"
+            onmouseout="this.style.backgroundColor='aquamarine';"
+            href="{% url 'signup' %}">
+              Cadastre-se
+          </button>
+        </p>
+      {% endif %}
+      </div>
+
+      <div class="right-div">
         <form method="GET" action="{% url 'resultados_pesquisa' %}">
-          <input type="text" name="q" placeholder="Pesquisar notícias" />
-          <button type="submit">Pesquisar</button>
+          <input type="text" 
+          name="q" 
+          placeholder="Pesquisar notícias" 
+          style="height: 40px; border-radius: 10px; width: 400px; font-size: 16px; font-family: 'Jost', sans-serif; font-weight: bold; margin-top: 0px;">
+          <img src="figuras/lupa-preta.png" alt="Ícone3" class="icon3" style="width: 20px; height: 20px; vertical-align: middle; margin-left: -30px;">
         </form>
       </div>
     </nav>
 
-    <h1>Notícias Principais</h1>
-    <ul>
+  
+    <h1 class="title" style="font-family: 'Jost', sans-serif; margin-left: 125px">Em Destaque</h1>
+    <div class="noticias">
       {% for noticia in noticias_principais %}
-      <li>
-        <a href="{% url 'detalhes_noticia' noticia.url %}"
-          >{{ noticia.title }}</a
-        >
-      </li>
+      {% if forloop.counter <= 6 %}
+      <div class="noticia">
+        <a href="{% url 'detalhes_noticia' noticia.url %}">
+          <div class="conteudo">
+            <div class="imagem-container">
+              <div class="imagem-noticia">
+                <img class="zoom-image" src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}">
+              </div>
+            </div>
+            <h2 class="titulo-noticia">{{ noticia.title }}</h2>
+          </div>
+        </a>
+      </div>
+      {% endif %}
       {% endfor %}
-    </ul>
+    </div>
+
+    <h1 class="title" style="font-family: 'Jost', sans-serif; margin-top: -30px;">Últimas Notícias</h1>
+    <div class="colunas">
+      <ul>
+          {% for noticia in noticias_principais %}
+          {% if forloop.counter > 6 %}
+          <li class="coluna">
+              <a href="{% url 'detalhes_noticia' noticia.url %}">
+                  <img src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}">
+                  <div class="noticia-info">
+                      <h2>{{ noticia.title }}</h2>
+                      <p>{{ noticia.description }}</p>
+                  </div>
+              </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+      </ul>
+  </div>
   </body>
 </html>

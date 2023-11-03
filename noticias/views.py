@@ -171,6 +171,7 @@ def obter_noticias_principais(categorias=[]):
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]']
         return noticias
     else:
         return []
