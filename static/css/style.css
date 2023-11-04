@@ -4,13 +4,20 @@
 }
 
 .left-div {
-    float: left;
     margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: auto;
+    text-align: center;
 }
 
 .right-div {
-    float: right;
-    margin-top: 75px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
 }
 
 .dropbtn {
