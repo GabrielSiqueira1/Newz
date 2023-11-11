@@ -10,36 +10,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <nav style="width:100%; position: relative; z-index: 1; display: flex; flex-direction: row; align-items: center;"
-      <div class="left-div" style="width:50%;">
+    <nav class="nav-inicio">
+      <div class="left-div">
         <div>
-          <a style="text-decoration: none;
-          float: left;
-          margin-top: 80px;
-          margin-left:5%;
-          color: black; 
-          display: flex;
-          align-items: center;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 300%;" 
-          href="{% url 'noticias_principais' %}">
-            <img src="figuras/newz-preto.png" alt="Ícone" class="icon" style="width: 50%; height: auto; max-width:50%;">
+          <a class="titulo-newz" href="{% url 'noticias_principais' %}">
+            <img src="{% static 'figuras/newz-preto.png' %}" alt="Ícone" class="icon">
             newz
           </a>
         </div>
-
       
-        <div class="dropdown" style="display:flex; flex-direction:row; margin-left:8%; margin-top:80px;">
-          <button class="dropbtn" style="font-family: 'Jost', sans-serif; font-weight: bold; font-size: 90%;">Jornais</button>
+        <div class="dropdown" style="margin-left: 10%; margin-right: -5%;">
+          <button class="dropbtn">Jornais</button>
             <div class="dropdown-content">
               <a href="{% url 'noticias_bbc' %}">BBC</a>
               <a href="{% url 'noticias_cnn' %}">CNN</a>
             </div>
-            <img src="figuras/dropdown.png" alt="Ícone2" class="icon2" style="width: 5%; height: auto; vertical-align: middle;">
+            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
         </div>
 
-        <div class="dropdown" style="display:flex; flex-direction:row;margin-top:80px;">
-          <button class="dropbtn" style="font-family: 'Jost', sans-serif; font-weight: bold; font-size: 90%;">Categorias</button>
+        <div class="dropdown">
+          <button class="dropbtn">Categorias</button>
             <div class="dropdown-content">
               <a href="{% static 'noticias_ciencia.html' %}">Ciência</a>
               <a href="{% static 'noticias_empreendedorismo.html' %}">Empreendedorismo</a>
@@ -48,69 +38,32 @@
               <a href="{% static 'noticias_saude.html' %}">Saúde</a>
               <a href="{% static 'noticias_tecnologia.html' %}">Tecnologia</a>
             </div>
-            <img src="figuras/dropdown.png" alt="Ícone2" class="icon2" style="width: 5%; height: auto;">
+            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
         </div>
       </div>
 
-      <div class="right-div" style="margin-right: 5%; margin-left: auto; width:50%; max-width:50%;">
-        <form method="GET" action="{% url 'resultados_pesquisa' %}" style="display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-right:3  0%">
-          <input type="text" 
-          name="q" 
-          placeholder="Pesquisar notícias" 
-          style="height: 40px; border-radius: 10px; width: 200px; font-size: 16px; font-family: 'Jost', sans-serif; font-weight: bold; margin-top: 0px;">
+      <div class="right-div">
+        <form class="form-pesquisa" method="GET" action="{% url 'resultados_pesquisa' %}">
+          <input class="input-pesquisa" type="text" name="q" placeholder="Pesquisar notícias" >
         </form>
         
         
         {% if user.is_authenticated %}
         <div>Olá, {{ user.username }}! <a href="{% url 'custom_logout' %}">Sair</a></div>
         {% else %}
-        <div style="display:flex; flex-direction:row; align-items:center" >
+        <div class="entrar">
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %} {{ form.as_p }}
-            <button style="background: none; 
-            border: none;
-            border-radius: 5px;
-            width: 70%;
-            height: auto;
-            cursor: pointer; 
-            margin-left: 30px; 
-            margin-right: 10px;
-            padding-top:20px;
-            padding-bottom:20px;
-            font-size: 20px; 
-            font-family: 'Jost', 
-            sans-serif; 
-            font-weight: bold;" 
-            type="submit"
-            onmouseover="this.style.backgroundColor='rgb(167, 167, 167)';"
-            onmouseout="this.style.backgroundColor='white';">
+            <button class="entrar-btn" type="submit" onmouseover="this.style.backgroundColor='rgb(167, 167, 167)';" onmouseout="this.style.backgroundColor='white';">
               Entrar
             </button>
           </form>
           <p>
-            <button style="cursor: pointer; 
-            background-color:aquamarine;
-            width: 90%;
-            height: auto;
-            border-radius: 5px;
-            cursor: pointer; 
-            margin-left: 30px; 
-            margin-right: 10px;
-            padding-top:20px;
-            padding-bottom:20px;
-            font-size: 20px; 
-            font-family: 'Jost', 
-            sans-serif; 
-            font-weight: bold;" 
-              background-color: aquamarine"
-              onmouseover="this.style.backgroundColor='rgb(38, 209, 152)';"
-              onmouseout="this.style.backgroundColor='aquamarine';"
-              href="{% url 'signup' %}">
-                Cadastre-se
-            </button>
+            <a href="{% url 'signup' %}">
+              <button class="cadastrar-btn" onmouseover="this.style.backgroundColor='rgb(38, 209, 152)';" onmouseout="this.style.backgroundColor='aquamarine';">
+                  Cadastre-se
+              </button>
+            </a>
           </p>
         {% endif %}
         </div>
@@ -118,7 +71,7 @@
     </nav>
 
   
-    <h1 class="title" style="font-family: 'Jost', sans-serif; margin-left: 125px">Em Destaque</h1>
+    <h1 class="title">Em Destaque</h1>
     <div class="noticias">
       {% for noticia in noticias_principais %}
       {% if forloop.counter <= 6 %}
@@ -138,31 +91,33 @@
       {% endfor %}
     </div>
 
-    <h1 class="title" style="font-family: 'Jost', sans-serif; margin-top: -30px;">Últimas Notícias</h1>
-    <div class="colunas">
-      <ul>
-          {% for noticia in noticias_principais %}
-          {% if forloop.counter > 6 %}
-          <li class="coluna">
-              <a href="{% url 'detalhes_noticia' noticia.url %}">
-                  <img src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}">
-                  <div class="noticia-info">
-                      <h2>{{ noticia.title }}</h2>
-                      <p>{{ noticia.description }}</p>
-                  </div>
-              </a>
-          </li>
-          {% endif %}
-          {% endfor %}
-      </ul>
-  </div>
+    <h1 class="title" style="margin-top: -30px;">Últimas Notícias</h1>
+    <div class="lista-noticias">
+      {% for noticia in noticias_principais %}
+      {% if forloop.counter > 6 %}
+        <div class="nova-noticia">
+          <a href="{% url 'detalhes_noticia' noticia.url %}">
+            <div class="nova-img-div">
+              <img src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}" class="imagem-lista">
+            </div>
+            <div class="noticia-title">
+              <h2 class="abreviar">{{ noticia.title }}</h2>
+              <p> By {{noticia.author}}</p>
+              <p> Published at: {{noticia.publishedAt}}</p>
+            </div>
+          </a>
+        </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
   <div class="footer">
-    <div style="font-family: 'Jost', sans-serif;">
+    <div>
         IHC &copy; 2023
     </div>
     <div>
         <a href="https://github.com/GabrielSiqueira1/Newz">
-          <img src="figuras/github.png" alt="icon3" class="icon3" style="width: 40px; height: 40px; margin-bottom: 20px;">
+          <img src="{% static 'figuras/github.png' %}" alt="icon3" class="icon3">
         </a>
     </div>
   </div>
