@@ -1,19 +1,54 @@
 .title {
     clear: both;
     padding: 40px;
+    font-family: 'Jost', sans-serif;
+    margin-left: 125px;
+}
+
+.nav-inicio {
+    width:100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.titulo-newz {
+    text-decoration: none;
+    margin-top: -1%;
+    margin-left:30%;
+    color: black; 
+    display: flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 300%;
+}
+
+.icon {
+    width: 50%; 
+    height: auto; 
+    max-width:50%;
+}
+
+.icon2 {
+    width: 6%; 
+    height: auto; 
+    vertical-align: middle;
 }
 
 .left-div {
-    margin-top: 80px;
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-right: auto;
-    text-align: center;
+    text-align:left;
 }
 
 .right-div {
-    margin-top: 80px;
+    margin-right: 10%;
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,6 +56,9 @@
 }
 
 .dropbtn {
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold; 
+    font-size: 115%;
     border: none;
     background: none;
 }
@@ -33,10 +71,13 @@
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
+    min-width: 160px;
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
 /* Links inside the dropdown */
@@ -100,16 +141,14 @@
 }
 
 .imagem-noticia {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 1);
     overflow: hidden;
 }
 
-.imagem-noticia::before {
+.imagem-noticia::after {
     content: "";
     background: rgba(0, 0, 0, 0.3); /* Cor de fundo semi-transparente (aqui, 0.5 representa 50% de opacidade) */
     position: absolute;
@@ -117,7 +156,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Coloca a sobreposição acima da imagem */
 }
 
 .conteudo:hover .zoom-image{
@@ -128,7 +166,7 @@
     font-family: 'Jost', sans-serif; 
     position: relative;
     text-shadow: 2px 2px 4px black;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     color: white; /* Cor do texto do título */
@@ -146,46 +184,148 @@ a:visited {
     color: white; /* Define a cor do texto para branco para links visitados */
 }
 
-.colunas {
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px; /* Espaçamento interno */
+    font-family: 'Jost', sans-serif;
+    margin-left: 2%;
+    margin-top: 5%;
+    margin-right: 2%;
+}
+
+.footer img {
+    width: 40px; 
+    height: 40px; 
+    margin-bottom: 20px;
+}
+
+.lista-noticias {
     column-count: 2;
     list-style: none;
     padding: 0;
     margin: 0 auto; /* Adicione margens automáticas à esquerda e à direita para centralizar o conteúdo */
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
-.colunas .coluna {
+.lista-noticias .nova-noticia {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    margin-bottom: 5%;
 }
 
-.colunas .coluna img {
-    width: 300px; /* Ajuste a largura da imagem conforme necessário */
-    max-height: 150px; /* Permite que a altura se ajuste automaticamente */
-    margin-right: 10px; /* Espaço entre a imagem e o texto */
+.lista-noticias .nova-noticia img {
+    width: 100%;
+    max-height: 200px; /* Permite que a altura se ajuste automaticamente */
+    min-height: 200px; /* Permite que a altura se ajuste automaticamente */
     vertical-align: middle; /* Centralize verticalmente as imagens */
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
-.colunas .noticia-info {
+.lista-noticias .nova-noticia .noticia-title {
     flex: 1; /* Faz com que o texto ocupe todo o espaço restante */
     color: black;
-    font-family: 'Jost', sans-serif;
 }
 
-.colunas .coluna a {
+.lista-noticias .nova-noticia a {
     display: flex;
     align-items: center;
     text-decoration: none; /* Remova a sublinhado padrão dos links */
 }
 
-.colunas .coluna img, .colunas .coluna h2, .colunas .coluna p {
+.lista-noticias .nova-noticia img, .lista-noticias .nova-noticia h2, .lista-noticias .nova-noticia p {
     vertical-align: middle;
-    margin:auto;
+    overflow: hidden;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px; /* Espaçamento interno */
+.lista-noticias .nova-noticia p {
+    color: black;
 }
+
+.abreviar{
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Número de linhas que você deseja exibir antes das reticências */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.nova-noticia {
+    border-radius: 10px;
+    overflow: hidden; /* Garante que a transformação de escala não ultrapasse o contêiner */
+    font-family: 'Jost', sans-serif;
+}
+
+.imagem-lista {
+    transition: transform 0.3s; /* Adiciona uma transição suave à transformação de escala */
+}
+
+.nova-noticia:hover .imagem-lista {
+    transform: scale(1.05); /* Aumenta a escala da imagem ao passar o mouse por cima */
+}
+
+.form-pesquisa {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right:3  0%
+}
+
+.nova-img-div {
+    display: inline-block;
+    overflow: hidden;
+    width: 50%;
+    border-radius: 10px;
+    margin-right: 10px; /* Espaço entre a imagem e o texto */
+}
+ .input-pesquisa {
+    height: 40px; 
+    border-radius: 10px; 
+    width: 200px; 
+    font-size: 16px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold; 
+    margin-top: 0px;
+ }
+
+ .entrar {
+    display:flex; 
+    flex-direction:row; 
+    align-items:center;
+ }
+
+ .entrar-btn {
+    background: none; 
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    height: auto;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+ }
+
+ .cadastrar-btn {
+    cursor: pointer; 
+    background-color:aquamarine;
+    width: 90%;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+ }
+

@@ -1,0 +1,283 @@
+.title {
+    clear: both;
+    padding: 40px;
+    font-family: 'Jost', sans-serif;
+    margin-left: 125px;
+}
+
+.nav-inicio {
+    width:100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.titulo-newz {
+    text-decoration: none;
+    margin-top: -1%;
+    margin-left:30%;
+    color: black; 
+    display: flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 300%;
+}
+
+.icon {
+    width: 50%; 
+    height: auto; 
+    max-width:50%;
+}
+
+.icon2 {
+    width: 6%; 
+    height: auto; 
+    vertical-align: middle;
+}
+
+.left-div {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: auto;
+    text-align:left;
+}
+
+.right-div {
+    margin-right: 10%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+}
+
+.dropbtn {
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold; 
+    font-size: 115%;
+    border: none;
+    background: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    min-width: 160px;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+         url('fonts/JetBrainsMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px; /* Espaçamento interno */
+    font-family: 'Jost', sans-serif;
+    margin-left: 2%;
+    margin-top: 5%;
+    margin-right: 2%;
+}
+
+.footer img {
+    width: 40px; 
+    height: 40px; 
+    margin-bottom: 20px;
+}
+
+.form-pesquisa {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right:3  0%
+}
+
+ .input-pesquisa {
+    height: 40px; 
+    border-radius: 10px; 
+    width: 200px; 
+    font-size: 16px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold; 
+    margin-top: 0px;
+ }
+
+ .entrar {
+    display:flex; 
+    flex-direction:row; 
+    align-items:center;
+ }
+
+ .entrar-btn {
+    background: none; 
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    height: auto;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+ }
+
+ .cadastrar-btn {
+    cursor: pointer; 
+    background-color:aquamarine;
+    width: 90%;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', 
+    sans-serif; 
+    font-weight: bold;
+ }
+
+ .imagem-noticia{
+    text-align: center;
+    margin-top: 3%;
+ }
+
+ .imagem-noticia img {
+    width: 45%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Garante que a imagem não ultrapasse a altura do contêiner */
+    vertical-align: middle;
+    border-radius: 10px;
+ }
+
+ .noticia {
+    max-width: 45%; /* Ajuste o comprimento máximo conforme necessário */
+    text-align: justify;
+    font-family: 'Jost', sans-serif;
+    font-size: 125%;
+ }
+
+ .noticia-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .noticia a {
+    text-decoration: none;
+    color:rgb(43, 85, 202);
+    font-weight: bold;
+ }
+
+ .play {
+    width: 2%;
+    height: auto;
+ }
+
+ .noticia a:hover {
+    text-decoration: underline;
+ }
+
+.noticias-relacionadas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+  
+.noticias-conteudo {
+    max-width: 45%; /* Ajuste o comprimento máximo conforme necessário */
+    text-align: justify;
+    font-family: 'Jost', sans-serif;
+    font-size: 125%;
+}
+  
+.conteudo {
+    margin-bottom: 20px;
+}
+  
+.conteudo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+  
+.conteudo img {
+    max-width: 45%; /* Ajuste o tamanho da imagem conforme necessário */
+    margin-right: 10px;
+}
+  
+.abreviar{
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Número de linhas que você deseja exibir antes das reticências */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.img-relacionada {
+    border-radius: 10px;
+    transition: transform 0.3s; /* Adiciona uma transição suave à transformação de escala */
+}
+
+.conteudo:hover .img-relacionada {
+    transform: scale(1.05); /* Aumenta a escala da imagem ao passar o mouse por cima */
+}
+
+.container-comentarios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.comentarios {
+    max-width: 45%; /* Ajuste o comprimento máximo conforme necessário */
+    text-align: justify;
+    font-family: 'Jost', sans-serif;
+    font-size: 125%;
+}
