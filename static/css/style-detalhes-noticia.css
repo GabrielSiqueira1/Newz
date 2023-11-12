@@ -8,7 +8,7 @@
 .nav-inicio {
     width:100%;
     position: sticky;
-    top: 0px;
+    top: -15px;
     background: white;
     z-index: 3;
     display: flex;
@@ -41,7 +41,6 @@
 
 .left-div {
     margin-top: 2%;
-    margin-bottom: 1%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -52,7 +51,6 @@
 .right-div {
     margin-right: 10%;
     margin-top: 2%;
-    margin-bottom: 1%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -132,7 +130,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right:3  0%
 }
 
  .input-pesquisa {
@@ -180,8 +177,7 @@
     padding-top:20px;
     padding-bottom:20px;
     font-size: 20px; 
-    font-family: 'Jost', 
-    sans-serif; 
+    font-family: 'Jost', sans-serif; 
     font-weight: bold;
  }
 
@@ -281,7 +277,53 @@
 
 .comentarios {
     max-width: 45%; /* Ajuste o comprimento máximo conforme necessário */
+    width: 45%;
     text-align: justify;
     font-family: 'Jost', sans-serif;
     font-size: 125%;
 }
+
+.comentario p {
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
+    max-width: 100%; /* Garante que o texto não ultrapasse a largura do contêiner pai */
+}
+
+#form-comentario {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilos específicos para o campo de texto dentro do formulário com a classe "meu-form" */
+  #form-comentario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    font-weight: bold;
+    resize: none;
+  }
+
+  /* Estilos específicos para o botão de envio dentro do formulário com a classe "meu-form" */
+  #form-comentario button {
+    background-color: aquamarine;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+  }
+
+  /* Adiciona um efeito de transição suave ao botão */
+  #form-comentario button:hover {
+    background-color: rgb(38, 209, 152);
+  }
