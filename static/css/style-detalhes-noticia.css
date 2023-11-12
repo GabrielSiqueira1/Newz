@@ -7,8 +7,10 @@
 
 .nav-inicio {
     width:100%;
-    position: relative;
-    z-index: 1;
+    position: sticky;
+    top: 0px;
+    background: white;
+    z-index: 3;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,7 +40,8 @@
 }
 
 .left-div {
-    margin-top: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -48,7 +51,8 @@
 
 .right-div {
     margin-right: 10%;
-    margin-top: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
     display: flex;
     flex-direction: row;
     align-items: center;
