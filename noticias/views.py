@@ -8,6 +8,8 @@ from django.http import HttpResponseRedirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from dateutil import parser
+from django.contrib.auth.views import LoginView
+from .forms import CustomLoginForm
 
 
 def resultados_pesquisa(request):
@@ -58,6 +60,10 @@ def signup(request):
         form = CustomUserCreationForm()
 
     return render(request, "registration/signup.html", {"form": form})
+
+class CustomLoginView(LoginView):
+    form_class = CustomLoginForm
+    template_name = 'registration/login.html'
 
 
 def detalhes_noticia(request, url_noticia):
@@ -172,6 +178,7 @@ def obter_noticias_principais(categorias=[]):
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
         noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]']
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
         return noticias
     else:
         return []
