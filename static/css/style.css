@@ -408,8 +408,15 @@
 .light-theme #git{
     content: url('../figuras/github-light-theme.png')
 }
+.light-theme #theme-toggle{
+    content: url('../figuras/toggle-light-theme.png')
+}
 
 /* Tema escuro */   
+
+.dark-theme #theme-toggle{
+    content: url('../figuras/toggle-dark-theme.png')
+}
 
 .dark-theme #setinha{
     content: url('../figuras/dropdown-dark-theme.png')
@@ -422,7 +429,7 @@
 }
 
 .dark-theme {
-  background-color: #333;
+  background-color: #021421;
   color: #fff;
 }
 
@@ -430,7 +437,7 @@
     width:100%;
     position: sticky;
     top: -15px;
-    background-color: #333;
+    background-color: #021421;
     z-index: 3;
     color:white;
     display: flex;
@@ -504,7 +511,7 @@
     min-width: 160px;
     display: none;
     position: absolute;
-    background-color: #333;
+    background-color: #021421;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
