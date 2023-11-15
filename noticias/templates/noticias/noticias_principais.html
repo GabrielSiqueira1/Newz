@@ -17,7 +17,7 @@
       <div class="left-div">
         <div>
           <a class="titulo-newz" href="{% url 'noticias_principais' %}">
-            <img src="{% static 'figuras/newz-preto.png' %}" alt="Ícone" class="icon">
+            <img src="{% static 'figuras/newz-light-theme.png' %}" alt="Ícone" class="icon" id="logo">
             newz
           </a>
         </div>
@@ -28,7 +28,7 @@
               <a href="{% url 'noticias_bbc' %}">BBC</a>
               <a href="{% url 'noticias_cnn' %}">CNN</a>
             </div>
-            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
+            <img src="{% static 'figuras/dropdown-light-theme.png' %}" alt="Ícone2" class="icon2" id="setinha">
         </div>
 
         <div class="dropdown">
@@ -41,7 +41,7 @@
               <a href="{% static 'noticias_saude.html' %}">Health</a>
               <a href="{% static 'noticias_tecnologia.html' %}">Technology</a>
             </div>
-            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
+            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2" id="setinha">
         </div>
       </div>
 
@@ -62,7 +62,7 @@
         <div class="entrar">
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %} {{ form.as_p }}
-            <button class="entrar-btn" type="submit" onmouseover="this.style.backgroundColor='rgb(167, 167, 167)';" onmouseout="this.style.backgroundColor='white';">
+            <button class="entrar-btn" type="submit">
               Sign in
             </button>
           </form>
@@ -125,7 +125,7 @@
     </div>
     <div>
         <a href="https://github.com/GabrielSiqueira1/Newz">
-          <img src="{% static 'figuras/github.png' %}" alt="icon3" class="icon3">
+          <img src="{% static 'figuras/github-light-theme.png' %}" alt="icon3" class="icon3" id="git">
         </a>
     </div>
   </div>
@@ -135,7 +135,29 @@
     
       themeToggle.addEventListener('click', function () {
         document.body.classList.toggle('dark-theme');
+        updateSeta();
+        updateLogo();
+        updateGit();
       });
+
+      function updateSeta(){
+        const seta = document.getElementById('setinha');
+        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+
+        logo.src = '../figuras/dropdown-${currentTheme}.png'
+      }
+      function updateLogo(){
+        const seta = document.getElementById('logo');
+        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+
+        logo.src = '../figuras/newz-${currentTheme}.png'
+      }
+      function updateGit(){
+        const seta = document.getElementById('git');
+        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+
+        logo.src = '../figuras/github-${currentTheme}.png'
+      }
     });
   </script>
   </body>
