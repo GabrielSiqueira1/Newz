@@ -4,6 +4,8 @@
 <html>
   <head>
     <title>Notícia Detalhada</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style-detalhes-noticia.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +22,7 @@
         </div>
       
         <div class="dropdown" style="margin-left: 10%; margin-right: -5%;">
-          <button class="dropbtn">Jornais</button>
+          <button class="dropbtn">News Outlets</button>
             <div class="dropdown-content">
               <a href="{% url 'noticias_bbc' %}">BBC</a>
               <a href="{% url 'noticias_cnn' %}">CNN</a>
@@ -29,14 +31,14 @@
         </div>
 
         <div class="dropdown">
-          <button class="dropbtn">Categorias</button>
+          <button class="dropbtn">Categories</button>
             <div class="dropdown-content">
-              <a href="{% static 'noticias_ciencia.html' %}">Ciência</a>
-              <a href="{% static 'noticias_empreendedorismo.html' %}">Empreendedorismo</a>
-              <a href="{% static 'noticias_esportes.html' %}">Esportes</a>
-              <a href="{% static 'noticias_entretenimento.html' %}">Entretenimento</a>
-              <a href="{% static 'noticias_saude.html' %}">Saúde</a>
-              <a href="{% static 'noticias_tecnologia.html' %}">Tecnologia</a>
+              <a href="{% static 'noticias_ciencia.html' %}">Science</a>
+              <a href="{% static 'noticias_empreendedorismo.html' %}">Entrepreneurship</a>
+              <a href="{% static 'noticias_esportes.html' %}">Sports</a>
+              <a href="{% static 'noticias_entretenimento.html' %}">Entertainment</a>
+              <a href="{% static 'noticias_saude.html' %}">Health</a>
+              <a href="{% static 'noticias_tecnologia.html' %}">Technology</a>
             </div>
             <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
         </div>
@@ -44,30 +46,35 @@
 
       <div class="right-div">
         <form class="form-pesquisa" method="GET" action="{% url 'resultados_pesquisa' %}">
-          <input class="input-pesquisa" type="text" name="q" placeholder="Pesquisar notícias" >
+          <input class="input-pesquisa" type="text" name="q" placeholder="Search news" >
         </form>
         
         
         {% if user.is_authenticated %}
-        <div>Olá, {{ user.username }}! <a href="{% url 'custom_logout' %}">Sair</a></div>
+        <div class="logado">
+          <h3>Hello, {{ user.username }}!</h3> 
+          <a href="{% url 'custom_logout' %}">
+            Sign out
+          </a>
+        </div>
         {% else %}
         <div class="entrar">
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <button class="entrar-btn" type="submit" onmouseover="this.style.backgroundColor='rgb(167, 167, 167)';" onmouseout="this.style.backgroundColor='white';">
-              Entrar
+              Sign in
             </button>
           </form>
           <p>
             <a href="{% url 'signup' %}">
               <button class="cadastrar-btn" onmouseover="this.style.backgroundColor='rgb(38, 209, 152)';" onmouseout="this.style.backgroundColor='aquamarine';">
-                  Cadastre-se
+                  Sign up
               </button>
             </a>
           </p>
         {% endif %}
         </div>
-        </div>
+      </div>
     </nav>
 
     <div class="imagem-noticia">
@@ -83,11 +90,11 @@
         <p>Published at: {{noticia_principal.publishedAt}}</p> 
         <a href="#" id="tts-button">
           <img src="{% static 'figuras/play.png' %}" alt="play" class="play">
-          Ouça a notícia
+          Listen to the article
         </a>
         <p>{{ noticia_principal.content }}</p>
         <a href="{{ noticia_principal.url }}" target="_blank">
-          Leia a notícia completa
+          Read the full article
         </a>
         {% else %}
         <p>Notícia não encontrada</p>
@@ -97,43 +104,68 @@
 
     <div class="noticias-relacionadas">
       <div class="noticias-conteudo">
-      <p>Compartilhe:</p>
-      <h2>Veja também</h2>
-      {% for noticia in noticias_relacionadas %}
-      <div class="conteudo">
-        <a href="{% url 'detalhes_noticia' noticia.url %}">
-          <img src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}" class="img-relacionada">
-          <div class="noticia-info">
-            <h3 class="abreviar">{{ noticia.title }}</h3>
-          </div>
+        <p style="font-weight: bold;">Share:</p>    
+        
+        <a href="#" id="shareWhatsApp">
+          <img src="{% static 'figuras/whatsapp.png' %}" alt="Ícone-wpp" class="icon-wpp">
         </a>
-      </div>
-      {% endfor %}
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              var shareWhatsApp = document.getElementById("shareWhatsApp");
+      
+              shareWhatsApp.addEventListener("click", function () {
+                  var currentURL = window.location.href;
+                  var encodedURL = encodeURIComponent(currentURL);
+      
+                  var whatsappMessage = "Check out this link on Newz: " + encodedURL;
+      
+                  // Abre uma nova janela do WhatsApp com a mensagem
+                  window.open("https://api.whatsapp.com/send?text=" + whatsappMessage, "_blank");
+              });
+          });
+        </script>
+
+        <h2>See also:</h2>
+        {% for noticia in noticias_relacionadas %}
+        <div class="conteudo">
+          <a href="{% url 'detalhes_noticia' noticia.url %}">
+            <img src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}" class="img-relacionada">
+            <div class="noticia-info">
+              <h3 class="abreviar">{{ noticia.title }}</h3>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
       </div>
     </div>
 
   <div class="container-comentarios">
     <div class="comentarios">
-      <h2>Comentários:</h2>
+      <h2>Comments</h2>
+      {% if comentarios %}
       <ul>
-        {% for comentario in comentarios %}
-        <div class="comentario">
-          <p>{{ comentario.texto }}</p>
-          {% if comentario.autor %}
-          <p>Por: {{ comentario.autor.username }}</p>
-          {% elif comentario.anonimo %}
-          <p>Comentário Anônimo</p>
-          {% endif %}
-        </div>
-        {% endfor %}
+          {% for comentario in comentarios %}
+          <li class="comentario">
+              <p>{{ comentario.texto }}</p>
+              {% if comentario.autor %}
+              <p>By: {{ comentario.autor.username }}</p>
+              {% elif comentario.anonimo %}
+              <p>Anonymous Comment</p>
+              {% endif %}
+          </li>
+          {% endfor %}
       </ul>
+      {% else %}
+      <p>No comments yet</p>
+      {% endif %}
 
-      <h2>Adicionar Comentário</h2>
+      <h2>Add Comment</h2>
       <form id="form-comentario" method="post">
         {% csrf_token %} 
         {{ form.texto }}
         <button type="submit">
-          Enviar Comentário
+          Send Comment
         </button>
       </form>
       <script>
