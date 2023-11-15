@@ -1,17 +1,54 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-login.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Login</h1>
+    <div class="conteudo">
+      <div class="secao-esquerda">
+        <div class="newz">
+          <a class="titulo-newz" href="{% url 'noticias_principais' %}">
+            <img src="{% static 'figuras/newz-branco.png' %}" alt="Ícone3" class="icon3">
+            newz
+          </a>
+        </div>
+        <p>A construction of knowledge</p>
+        <img src="{% static 'figuras/newspaper.png' %}" alt="Ícone4" class="icon4">
+      </div>
+    
+      <div class="secao-direita">
+        <h1>Glad you are back!</h1>
 
-    <form method="post" action="{% url 'login' %}">
-      {% csrf_token %} {{ form.username.label_tag }} {{ form.username }}
-      {{form.password.label_tag }} {{ form.password }}
-      <button type="submit">Entrar</button>
-    </form>
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %} 
+          <div class="forms">
+            {{ form.username }}
+          </div>
+          <div>
+            {{ form.password }}
+          </div class="forms">
+          <button type="submit">Sign in</button>
+        </form>
 
-    <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
+        <p>Doesn't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-label">
+          IHC &copy; 2023
+      </div>
+      <div>
+          <a href="https://github.com/GabrielSiqueira1/Newz">
+            <img src="{% static 'figuras/github.png' %}" alt="icon3" class="icon3">
+          </a>
+      </div>
+    </div>
+    
   </body>
 </html>

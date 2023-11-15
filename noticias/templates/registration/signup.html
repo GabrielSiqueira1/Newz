@@ -1,16 +1,57 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-signup.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Registro</h1>
+    <div class="conteudo">
+      <div class="secao-esquerda">
+        <div class="newz">
+          <a class="titulo-newz" href="{% url 'noticias_principais' %}">
+            <img src="{% static 'figuras/newz-branco.png' %}" alt="Ícone3" class="icon3">
+            newz
+          </a>
+        </div>
+        <p>A construction of knowledge</p>
+        <img src="{% static 'figuras/newspaper.png' %}" alt="Ícone4" class="icon4">
+      </div>
 
-    <form method="post">
-      {% csrf_token %} {{ form.full_name.label_tag }} {{ form.full_name }}
-      {{form.username.label_tag }} {{ form.username }} {{ form.email.label_tag}}
-      {{ form.email }} {{ form.password1.label_tag }} {{ form.password1 }}
-      <button type="submit">Registre-se</button>
-    </form>
+      <div class="secao-direita">
+        <h1>Create your account now, it's free!</h1>
+        <form method="post">
+          {% csrf_token %}
+          <div>
+            {{ form.full_name }}
+          </div>
+          <div>
+            {{ form.username }}
+          </div>
+          <div>
+            {{ form.email }} 
+          </div>
+          <div>
+            {{ form.password1 }}
+          </div>
+          <button type="submit">Register</button>
+          <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+        </form>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-label">
+          IHC &copy; 2023
+      </div>
+      <div>
+          <a href="https://github.com/GabrielSiqueira1/Newz">
+            <img src="{% static 'figuras/github.png' %}" alt="icon3" class="icon3">
+          </a>
+      </div>
+    </div>
   </body>
 </html>
