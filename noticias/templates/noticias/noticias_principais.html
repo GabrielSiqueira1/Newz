@@ -8,8 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    
   </head>
-  <body>
+  <body class="light-theme">
+    <button id="theme-toggle">Alternar Tema</button>
+
     <nav class="nav-inicio">
       <div class="left-div">
         <div>
@@ -65,7 +68,7 @@
           </form>
           <p>
             <a href="{% url 'signup' %}">
-              <button class="cadastrar-btn" onmouseover="this.style.backgroundColor='rgb(38, 209, 152)';" onmouseout="this.style.backgroundColor='aquamarine';">
+              <button class="cadastrar-btn">
                   Sign up
               </button>
             </a>
@@ -126,5 +129,14 @@
         </a>
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const themeToggle = document.getElementById('theme-toggle'); // Adicione um botão de alternância com id="theme-toggle"
+    
+      themeToggle.addEventListener('click', function () {
+        document.body.classList.toggle('dark-theme');
+      });
+    });
+  </script>
   </body>
 </html>
