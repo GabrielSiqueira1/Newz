@@ -1,51 +1,107 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Notícias da CNN</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-newsfilter.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <nav>
-      <a href="{% url 'noticias_principais' %}">Home</a>
-      <form method="get">
-        <label for="categoria">Categorias</label>
-        <select name="categoria" id="categoria">
-          <option value="business">Empreendedorismo</option>
-          <option value="entertainment">Entretenimento</option>
-          <option value="health">Saúde</option>
-          <option value="science">Ciência</option>
-          <option value="sports">Esportes</option>
-          <option value="technology">Tecnologia</option>
-        </select>
-        <input type="submit" value="Filtrar" />
-      </form>
-
-      <div>
-        <button>Jornais</button>
+    <nav class="nav-inicio">
+      <div class="left-div">
         <div>
-          <a href="{% url 'noticias_bbc' %}">Ver Notícias da BBC</a>
-          <a href="{% url 'noticias_cnn' %}">Ver Notícias da CNN</a>
+          <a class="titulo-newz" href="{% url 'noticias_principais' %}">
+            <img src="{% static 'figuras/newz-preto.png' %}" alt="Ícone" class="icon">
+            newz
+          </a>
+        </div>
+      
+        <div class="dropdown" style="margin-left: 10%; margin-right: -5%;">
+          <button class="dropbtn">News Outlets</button>
+            <div class="dropdown-content">
+              <a href="{% url 'noticias_bbc' %}">BBC</a>
+              <a href="{% url 'noticias_cnn' %}">CNN</a>
+            </div>
+            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Categories</button>
+            <div class="dropdown-content">
+              <a href="{% static 'noticias_ciencia.html' %}">Science</a>
+              <a href="{% static 'noticias_empreendedorismo.html' %}">Entrepreneurship</a>
+              <a href="{% static 'noticias_esportes.html' %}">Sports</a>
+              <a href="{% static 'noticias_entretenimento.html' %}">Entertainment</a>
+              <a href="{% static 'noticias_saude.html' %}">Health</a>
+              <a href="{% static 'noticias_tecnologia.html' %}">Technology</a>
+            </div>
+            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
         </div>
       </div>
 
-      {% if user.is_authenticated %} Olá, {{ user.username }}!
-      <a href="{% url 'logout' %}">Sair</a>
-      {% else %}
-      <form method="post" action="{% url 'login' %}">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit">Entrar</button>
-      </form>
-      <p>Não tem uma conta? <a href="{% url 'signup' %}">Registre-se</a></p>
-      {% endif %}
+      <div class="right-div">
+        <form class="form-pesquisa" method="GET" action="{% url 'resultados_pesquisa' %}">
+          <input class="input-pesquisa" type="text" name="q" placeholder="Search news" >
+        </form>
+        
+        
+        {% if user.is_authenticated %}
+        <div class="logado">
+          <h3>Hello, {{ user.username }}!</h3> 
+          <a href="{% url 'custom_logout' %}">
+            Sign out
+          </a>
+        </div>
+        {% else %}
+        <div class="entrar">
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <button class="entrar-btn" type="submit" onmouseover="this.style.backgroundColor='rgb(167, 167, 167)';" onmouseout="this.style.backgroundColor='white';">
+              Sign in
+            </button>
+          </form>
+          <p>
+            <a href="{% url 'signup' %}">
+              <button class="cadastrar-btn" onmouseover="this.style.backgroundColor='rgb(38, 209, 152)';" onmouseout="this.style.backgroundColor='aquamarine';">
+                  Sign up
+              </button>
+            </a>
+          </p>
+        {% endif %}
+        </div>
+      </div>
     </nav>
-    <h1>Notícias da CNN</h1>
-    <ul>
+
+    <h1 class="title">CNN News</h1>
+    <div class="lista-noticias">
       {% for noticia in cnn_noticias %}
-      <li>
-        <a href="{% url 'detalhes_noticia' noticia.url %}"
-          >{{ noticia.title }}</a
-        >
-      </li>
+        <div class="nova-noticia">
+          <a href="{% url 'detalhes_noticia' noticia.url %}">
+            <div class="nova-img-div">
+              <img src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}" class="imagem-lista">
+            </div>
+            <div class="noticia-title">
+              <h2 class="abreviar">{{ noticia.title }}</h2>
+              <p> By {{noticia.author}}</p>
+              <p> Published at: {{noticia.publishedAt}}</p>
+            </div>
+          </a>
+        </div>
       {% endfor %}
-    </ul>
+    </div>
+
+    <div class="footer">
+      <div>
+          IHC &copy; 2023
+      </div>
+      <div>
+          <a href="https://github.com/GabrielSiqueira1/Newz">
+            <img src="{% static 'figuras/github.png' %}" alt="icon3" class="icon3">
+          </a>
+      </div>
+    </div>
   </body>
 </html>
