@@ -1,8 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
 .title {
     clear: both;
     padding: 40px;
     font-family: 'Jost', sans-serif;
     margin-left: 125px;
+    font-size: 300%;
 }
 
 .nav-inicio {
@@ -19,7 +26,7 @@
 .titulo-newz {
     text-decoration: none;
     margin-top: -1%;
-    margin-left:30%;
+    margin-left:45%;
     color: black; 
     display: flex;
     align-items: center;
@@ -60,7 +67,7 @@
 .dropbtn {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
-    font-size: 115%;
+    font-size: 140%;
     border: none;
     background: none;
 }
@@ -100,6 +107,38 @@
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.logado {
+    min-width: 50%;
+    max-width: 50%;
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top: 20px;
+    font-size: 150%;
+    font-family: 'Jost', sans-serif; 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.logado h3 {
+    align-self: flex-end;
+    margin-bottom: -2%;
+    margin-top: 0;
+}
+
+.logado a {
+    margin-right: 5%;
+    color: black;
+    margin-top: auto; /* Faz com que o link seja alinhado à parte inferior */
+    align-self: flex-end; /* Justifica o link à direita */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.logado a:hover {
+    text-decoration: underline;
 }
 
 @font-face {
@@ -290,6 +329,7 @@ a:visited {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
     margin-top: 0px;
+    text-indent: 10px;
  }
 
  .entrar {
@@ -302,7 +342,7 @@ a:visited {
     background: none; 
     border: none;
     border-radius: 5px;
-    width: 70%;
+    width: 80%;
     height: auto;
     cursor: pointer; 
     margin-left: 30px; 

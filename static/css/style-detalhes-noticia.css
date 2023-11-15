@@ -1,3 +1,9 @@
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
 .title {
     clear: both;
     padding: 40px;
@@ -19,7 +25,7 @@
 .titulo-newz {
     text-decoration: none;
     margin-top: -1%;
-    margin-left:30%;
+    margin-left:45%;
     color: black; 
     display: flex;
     align-items: center;
@@ -60,7 +66,7 @@
 .dropbtn {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
-    font-size: 115%;
+    font-size: 140%;
     border: none;
     background: none;
 }
@@ -102,6 +108,39 @@
     display: block;
 }
 
+.logado {
+    min-width: 50%;
+    max-width: 50%;
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top: 20px;
+    font-size: 150%;
+    font-family: 'Jost', sans-serif; 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.logado h3 {
+    align-self: flex-end;
+    margin-bottom: -2%;
+    margin-top: 0;
+}
+
+.logado a {
+    margin-right: 5%;
+    text-decoration: none;
+    color: black;
+    margin-top: auto; /* Faz com que o link seja alinhado à parte inferior */
+    align-self: flex-end; /* Justifica o link à direita */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.logado a:hover {
+    text-decoration: underline;
+}
+
 @font-face {
     font-family: 'JetBrains Mono';
     src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'),
@@ -132,7 +171,7 @@
     align-items: center;
 }
 
- .input-pesquisa {
+.input-pesquisa {
     height: 40px; 
     border-radius: 10px; 
     width: 200px; 
@@ -140,6 +179,7 @@
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
     margin-top: 0px;
+    text-indent: 10px;
  }
 
  .entrar {
@@ -152,7 +192,7 @@
     background: none; 
     border: none;
     border-radius: 5px;
-    width: 70%;
+    width: 80%;
     height: auto;
     cursor: pointer; 
     margin-left: 30px; 
@@ -234,6 +274,10 @@
     font-family: 'Jost', sans-serif;
     font-size: 125%;
 }
+
+.icon-wpp {
+    width: 5%;
+}
   
 .conteudo {
     margin-bottom: 20px;
@@ -249,6 +293,7 @@
 .conteudo img {
     max-width: 45%; /* Ajuste o tamanho da imagem conforme necessário */
     margin-right: 10px;
+    height: 20%;
 }
   
 .abreviar{
@@ -307,6 +352,7 @@
     box-sizing: border-box;
     font-family: 'Jost', sans-serif;
     font-weight: bold;
+    font-size: 90%;
     resize: none;
   }
 
@@ -324,6 +370,22 @@
   }
 
   /* Adiciona um efeito de transição suave ao botão */
-  #form-comentario button:hover {
+#form-comentario button:hover {
     background-color: rgb(38, 209, 152);
-  }
+}
+
+.comentario {
+    background-color: #f4f4f4; /* Cor de fundo para diferenciar os comentários */
+    border: 1px solid #ccc; /* Adiciona uma borda ao redor de cada comentário */
+    padding: 10px; /* Adiciona espaçamento interno para o conteúdo do comentário */
+    margin-bottom: 15px; /* Adiciona espaçamento entre os comentários */
+    border-radius: 10px;
+}
+
+.comentario p {
+    margin: 0; /* Remove a margem padrão dos parágrafos dentro dos comentários */
+}
+
+.comentario p:last-child {
+    margin-bottom: 0; /* Remove a margem inferior do último parágrafo (por exemplo, "Comentário Anônimo") */
+}

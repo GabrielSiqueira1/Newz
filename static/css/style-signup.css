@@ -1,0 +1,150 @@
+.secao-esquerda a {
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.titulo-newz {
+    text-decoration: none;
+    color: black; 
+    display: flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 300%;
+    justify-content: center;
+    margin-left: -5%;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+         url('fonts/JetBrainsMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.conteudo {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.secao-esquerda {
+    background-color: #6664C8;
+    font-family: 'Jost', sans-serif;
+    color: white;
+    width: 35%;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 100%;
+}
+  
+  /* Adiciona um espaçamento entre a primeira imagem e o h1 */
+.secao-esquerda img.icon3 {
+    margin-bottom: 10px;
+}
+
+
+.secao-esquerda p {
+    font-size: 150%;
+    max-width: 40%;
+    text-align: center;
+}
+  
+  /* Centraliza verticalmente o p e a segunda imagem */
+.secao-esquerda h1, .secao-esquerda p, .secao-esquerda img.icon4 {
+    margin: 0;
+}
+
+.newz {
+    margin-top: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Adiciona um espaçamento entre a primeira imagem e o h1 */
+.secao-esquerda img.icon3 {
+    width: 30%;
+}
+
+.secao-esquerda img.icon4 {
+    margin-top: 10%;
+    width: 50%;
+}
+
+.secao-direita {
+    flex: 1;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: bold;
+}
+
+.secao-direita form {
+    max-width: 50%; /* Ajuste a largura máxima conforme necessário */
+    width: 100%;
+    margin: 0 auto; /* Centraliza o formulário na tela */
+}
+
+.secao-direita form div {
+    margin-bottom: 10px;
+}
+
+.secao-direita h1 {
+    font-size: 300%;
+}
+
+.secao-direita form input {
+    width: 100%; /* Ajuste a largura conforme necessário */
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.secao-direita form button {
+    width: 100%;
+    background-color: aquamarine;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.secao-direita form button:hover {
+    background-color: rgb(38, 209, 152);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px; /* Espaçamento interno */
+    font-family: 'Jost', sans-serif;
+    margin-left: 2%;
+    margin-top: -5%;
+    margin-right: 2%;
+}
+
+.footer img {
+    width: 40px; 
+    height: 40px;
+}
