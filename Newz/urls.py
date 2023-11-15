@@ -20,6 +20,7 @@ from noticias import views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from noticias.views import CustomLoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +28,7 @@ urlpatterns = [
     path('bbc/', views.noticias_bbc, name='noticias_bbc'),
     path('cnn/', views.noticias_cnn, name='noticias_cnn'),
     path('noticias/<path:url_noticia>/', views.detalhes_noticia, name='detalhes_noticia'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', views.custom_logout, name='custom_logout'),
     path('signup/', views.signup, name='signup'),
     path('resultados_pesquisa/', views.resultados_pesquisa, name='resultados_pesquisa'),
