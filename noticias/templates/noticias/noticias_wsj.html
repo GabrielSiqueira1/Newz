@@ -3,14 +3,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Notícias Principais</title>
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <title>Notícias da WSJ</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-newsfilter.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
-    
   </head>
-  <body class="light-theme">
+  <body>
     <img src="{% static 'figuras/toggle-light-theme.png' %}" alt="Alternar Tema" id="theme-toggle" style="width: 10%; height:auto; right: 0; left: 0">
 
     <nav class="nav-inicio">
@@ -77,32 +76,11 @@
         </div>
       </div>
     </nav>
-
-  
-    <h1 class="title">Highlights</h1>
-    <div class="noticias">
-      {% for noticia in noticias_principais %}
-      {% if forloop.counter <= 6 %}
-      <div class="noticia">
-        <a href="{% url 'detalhes_noticia' noticia.url %}">
-          <div class="conteudo">
-            <div class="imagem-container">
-              <div class="imagem-noticia">
-                <img class="zoom-image" src="{{ noticia.urlToImage }}" alt="{{ noticia.title }}">
-              </div>
-            </div>
-            <h2 class="titulo-noticia">{{ noticia.title }}</h2>
-          </div>
-        </a>
-      </div>
-      {% endif %}
-      {% endfor %}
-    </div>
-
-    <h1 class="title" style="margin-top: -30px;">Latest news</h1>
+    
+    
+    <h1 class="title">WSJ News</h1>
     <div class="lista-noticias">
-      {% for noticia in noticias_principais %}
-      {% if forloop.counter > 6 %}
+      {% for noticia in wsj_noticias %}
         <div class="nova-noticia">
           <a href="{% url 'detalhes_noticia' noticia.url %}">
             <div class="nova-img-div">
@@ -115,62 +93,18 @@
             </div>
           </a>
         </div>
-      {% endif %}
       {% endfor %}
     </div>
 
-  <div class="footer">
-    <div>
-        IHC &copy; 2023
+    <div class="footer">
+      <div>
+          IHC &copy; 2023
+      </div>
+      <div>
+          <a href="https://github.com/GabrielSiqueira1/Newz">
+            <img src="{% static 'figuras/github-light-theme.png' %}" alt="icon3" class="icon3">
+          </a>
+      </div>
     </div>
-    <div>
-        <a href="https://github.com/GabrielSiqueira1/Newz">
-          <img src="{% static 'figuras/github-light-theme.png' %}" alt="icon3" class="icon3" id="git">
-        </a>
-    </div>
-  </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const themeToggle = document.getElementById('theme-toggle'); // Adicione um botão de alternância com id="theme-toggle"
-      const body = document.body;
-      const currentTheme = localStorage.getItem('theme') || 'light-theme';
-    
-      body.classList.add(currentTheme);
-
-      themeToggle.addEventListener('click', function () {
-        document.body.classList.toggle('dark-theme');
-        const newTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
-        localStorage.setItem('theme', newTheme);
-        updateSeta();
-        updateLogo();
-        updateGit();
-        updateThemeIcon();
-      });
-      function updateThemeIcon(){
-        const themeicon = document.getElementById('theme-toggle');
-        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-
-        themeicon.src = '../figuras/toggle-${currentTheme}.png'
-      }
-      function updateSeta(){
-        const seta = document.getElementById('setinha');
-        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-
-        seta.src = '../figuras/dropdown-${currentTheme}.png'
-      }
-      function updateLogo(){
-        const logo = document.getElementById('logo');
-        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-
-        logo.src = '../figuras/newz-${currentTheme}.png'
-      }
-      function updateGit(){
-        const git = document.getElementById('git');
-        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-
-        git.src = '../figuras/github-${currentTheme}.png'
-      }
-    });
-  </script>
   </body>
 </html>

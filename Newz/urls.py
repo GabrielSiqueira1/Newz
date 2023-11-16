@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.noticias_principais, name='noticias_principais'),
     path('bbc/', views.noticias_bbc, name='noticias_bbc'),
+    path('wsj/', views.noticias_wsj, name='noticias_wsj'),
     path('cnn/', views.noticias_cnn, name='noticias_cnn'),
     path('noticias/<path:url_noticia>/', views.detalhes_noticia, name='detalhes_noticia'),
     path('login/', CustomLoginView.as_view(), name='login'),

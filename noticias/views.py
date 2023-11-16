@@ -163,6 +163,21 @@ def obter_noticias_da_cnn():
         return noticias
     else:
         return []
+    
+def obter_noticias_da_wsj():
+    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    url = "https://newsapi.org/v2/top-headlines"
+    params = {
+        "apiKey": api_key,
+        "sources": "the-wall-street-journal",
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        noticias = response.json().get("articles", [])
+        return noticias
+    else:
+        return []
 
 
 def obter_noticias_principais(categorias=[]):
@@ -177,7 +192,7 @@ def obter_noticias_principais(categorias=[]):
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
-        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]']
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
         noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
         return noticias
     else:
@@ -203,3 +218,7 @@ def noticias_bbc(request):
 def noticias_cnn(request):
     cnn_noticias = obter_noticias_da_cnn()
     return render(request, "noticias/noticias_cnn.html", {"cnn_noticias": cnn_noticias})
+
+def noticias_wsj(request):
+    wsj_noticias = obter_noticias_da_wsj()
+    return render(request, "noticias/noticias_wsj.html", {"wsj_noticias": wsj_noticias})
