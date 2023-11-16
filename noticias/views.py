@@ -264,7 +264,7 @@ def obter_noticias_da_esportes():
 
 def noticias_esportes(request):
     esporte_noticias = obter_noticias_da_esportes()
-    return render(request, "noticias/noticias_esporte.html", {"esporte_noticias":
+    return render(request, "noticias/noticias_esportes.html", {"esporte_noticias":
         esporte_noticias})
     
 def obter_noticias_da_entretenimento():
