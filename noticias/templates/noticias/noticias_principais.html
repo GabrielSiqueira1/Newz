@@ -35,11 +35,11 @@
         <div class="dropdown">
           <button class="dropbtn">Categories</button>
             <div class="dropdown-content">
-              <a href="{% static 'noticias_ciencia.html' %}">Science</a>
-              <a href="{% static 'noticias_esportes.html' %}">Sports</a>
-              <a href="{% static 'noticias_entretenimento.html' %}">Entertainment</a>
-              <a href="{% static 'noticias_saude.html' %}">Health</a>
-              <a href="{% static 'noticias_tecnologia.html' %}">Technology</a>
+              <a href="{% url 'noticias_ciencia' %}">Science</a>
+              <a href="{% url 'noticias_esportes' %}">Sports</a>
+              <a href="{% url 'noticias_entretenimento' %}">Entertainment</a>
+              <a href="{% url 'noticias_saude' %}">Health</a>
+              <a href="{% url 'noticias_tecnologia' %}">Technology</a>
             </div>
             <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2" id="setinha">
         </div>

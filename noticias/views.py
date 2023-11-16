@@ -210,10 +210,10 @@ def noticias_principais(request):
     )
 
 
+# Jornais
 def noticias_bbc(request):
     bbc_noticias = obter_noticias_da_bbc()
     return render(request, "noticias/noticias_bbc.html", {"bbc_noticias": bbc_noticias})
-
 
 def noticias_cnn(request):
     cnn_noticias = obter_noticias_da_cnn()
@@ -222,3 +222,110 @@ def noticias_cnn(request):
 def noticias_wsj(request):
     wsj_noticias = obter_noticias_da_wsj()
     return render(request, "noticias/noticias_wsj.html", {"wsj_noticias": wsj_noticias})
+
+# Categorias
+
+def obter_noticias_da_ciencia():
+    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    url = "https://newsapi.org/v2/top-headlines?country=us"
+    params = {
+        "apiKey": api_key,
+        "category": "science",
+        "pageSize": 100,
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        noticias = response.json().get("articles", [])
+        return noticias
+    else:
+        return []
+
+def noticias_ciencia(request):
+    ciencia_noticias = obter_noticias_da_ciencia()
+    return render(request, "noticias/noticias_ciencia.html", {"ciencia_noticias":
+        ciencia_noticias})
+
+def obter_noticias_da_esportes():
+    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    url = "https://newsapi.org/v2/top-headlines?country=us"
+    params = {
+        "apiKey": api_key,
+        "category": "sports",
+        "pageSize": 100,
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        noticias = response.json().get("articles", [])
+        return noticias
+    else:
+        return []
+
+def noticias_esportes(request):
+    esporte_noticias = obter_noticias_da_esportes()
+    return render(request, "noticias/noticias_esporte.html", {"esporte_noticias":
+        esporte_noticias})
+    
+def obter_noticias_da_entretenimento():
+    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    url = "https://newsapi.org/v2/top-headlines?country=us"
+    params = {
+        "apiKey": api_key,
+        "category": "entertainment",
+        "pageSize": 100,
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        noticias = response.json().get("articles", [])
+        return noticias
+    else:
+        return []
+
+def noticias_entretenimento(request):
+    entretenimento_noticias = obter_noticias_da_entretenimento()
+    return render(request, "noticias/noticias_entretenimento.html", {"entretenimento_noticias":
+        entretenimento_noticias})
+    
+def obter_noticias_da_saude():
+    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    url = "https://newsapi.org/v2/top-headlines?country=us"
+    params = {
+        "apiKey": api_key,
+        "category": "health",
+        "pageSize": 100,
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        noticias = response.json().get("articles", [])
+        return noticias
+    else:
+        return []
+
+def noticias_saude(request):
+    saude_noticias = obter_noticias_da_saude()
+    return render(request, "noticias/noticias_saude.html", {"saude_noticias":
+        saude_noticias})
+
+def obter_noticias_da_tecnologia():
+    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    url = "https://newsapi.org/v2/top-headlines?country=us"
+    params = {
+        "apiKey": api_key,
+        "category": "technology",
+        "pageSize": 100,
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        noticias = response.json().get("articles", [])
+        return noticias
+    else:
+        return []
+
+def noticias_tecnologia(request):
+    tecnologia_noticias = obter_noticias_da_tecnologia()
+    return render(request, "noticias/noticias_tecnologia.html", {"tecnologia_noticias":
+        tecnologia_noticias})
