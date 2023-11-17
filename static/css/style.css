@@ -412,12 +412,25 @@
     content: url('../figuras/toggle-light-theme.png')
 }
 
+.light-theme .toggle{
+    width: 10%; 
+    height:auto; 
+    right: 0; 
+    left: 0;
+}
+
 /* Tema escuro */   
+
+.dark-theme .toggle{
+    width: 10%; 
+    height:auto; 
+    right: 0; 
+    left: 0;
+}
 
 .dark-theme #theme-toggle{
     content: url('../figuras/toggle-dark-theme.png')
 }
-
 .dark-theme #setinha{
     content: url('../figuras/dropdown-dark-theme.png')
 }
@@ -595,3 +608,15 @@
     font-weight: bold;
     color:white
  }
+
+ .dark-theme .icon2 {
+    width: 6%; 
+    height: auto; 
+    vertical-align: middle;
+}
+
+.dark-theme .icon {
+    width: 75%; 
+    height: auto; 
+    max-width:75%;
+}
