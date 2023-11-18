@@ -11,7 +11,20 @@
     
   </head>
   <body class="light-theme">
-    <img src="{% static 'figuras/toggle-light-theme.png' %}" alt="Alternar Tema" id="theme-toggle" class="toggle">
+    <div class="access">
+      <img src="{% static 'figuras/toggle-light-theme.png' %}" alt="Alternar Tema" id="theme-toggle" class="toggle">
+
+      <button onclick="alterarFonte('pequeno')" id="btn-pequeno">
+        <img src="{% static 'figuras/dim-fonte-light-theme.png' %}" alt="fonte pequena" id="fonte-pequena">
+      </button>
+      <button onclick="alterarFonte('normal')" id="btn-normal" class="ativo">
+        <img src="{% static 'figuras/fonte-normal-light-theme.png' %}" alt="fonte normal" id="fonte-normal">
+      </button>
+      <button onclick="alterarFonte('grande')" id="btn-grande">
+        <img src="{% static 'figuras/aum-fonte-light-theme.png' %}" alt="fonte grande" id="fonte-grande">
+      </button>     
+    </div>
+    
 
     <nav class="nav-inicio">
       <div class="left-div">
@@ -119,32 +132,73 @@
       {% endfor %}
     </div>
 
-  <div class="footer">
-    <div>
-        IHC &copy; 2023
+    <div class="footer">
+      <div>
+          IHC &copy; 2023
+      </div>
+      <div>
+          <a href="https://github.com/GabrielSiqueira1/Newz">
+            <img src="{% static 'figuras/github-light-theme.png' %}" alt="icon3" class="icon3" id="git">
+          </a>
+      </div>
     </div>
-    <div>
-        <a href="https://github.com/GabrielSiqueira1/Newz">
-          <img src="{% static 'figuras/github-light-theme.png' %}" alt="icon3" class="icon3" id="git">
-        </a>
-    </div>
-  </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const themeToggle = document.getElementById('theme-toggle'); // Adicione um botão de alternância com id="theme-toggle"
-      const body = document.body;
-      const currentTheme = localStorage.getItem('theme') || 'light-theme';
-    
-      body.classList.add(currentTheme);
-
-      themeToggle.addEventListener('click', function () {
-        document.body.classList.toggle('dark-theme');
-        const newTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
-        localStorage.setItem('theme', newTheme);
-
-      });
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const themeToggle = document.getElementById('theme-toggle'); // Adicione um botão de alternância com id="theme-toggle"
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme') || 'light-theme';
       
-    });
-  </script>
+        body.classList.add(currentTheme);
+
+        themeToggle.addEventListener('click', function () {
+          document.body.classList.toggle('dark-theme');
+          const newTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
+          localStorage.setItem('theme', newTheme);
+
+        });
+        
+      });
+    </script>
+    <script>
+      const tamanhosOriginais = {};
+      const elementos = document.querySelectorAll('.title, .titulo-noticia, .noticia-title, .dropdown, .dropbtn, .cadastrar-btn, .entrar-btn, .input-pesquisa');
+      const botoes = document.querySelectorAll('button');
+
+      elementos.forEach(elemento => {
+          const tamanhoInicial = parseFloat(window.getComputedStyle(elemento).fontSize);
+          tamanhosOriginais[elemento.className] = tamanhoInicial;
+      });
+
+      function alterarFonte(tamanho) {
+          elementos.forEach(elemento => {
+              let novoTamanho;
+
+              switch (tamanho) {
+                  case 'pequeno':
+                      novoTamanho = tamanhosOriginais[elemento.className] * 0.8;
+                      break;
+                  case 'normal':
+                      novoTamanho = tamanhosOriginais[elemento.className];
+                      break;
+                  case 'grande':
+                      novoTamanho = tamanhosOriginais[elemento.className] * 1.2;
+                      break;
+                  default:
+                      novoTamanho = tamanhosOriginais[elemento.className];
+              }
+
+              elemento.style.fontSize = `${novoTamanho}px`;
+          });
+
+          // Remover a classe 'ativo' de todos os botões
+          botoes.forEach(botao => {
+              botao.classList.remove('ativo');
+          });
+
+          // Adicionar a classe 'ativo' ao botão clicado
+          const botaoClicado = document.getElementById(`btn-${tamanho}`);
+          botaoClicado.classList.add('ativo');
+      }
+    </script>
   </body>
 </html>
