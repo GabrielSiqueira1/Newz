@@ -26,8 +26,10 @@ class CustomUserCreationForm(UserCreationForm):
 
     def clean_password1(self):
         password = self.cleaned_data.get('password1')
+        
         if len(password) < 6:
             raise forms.ValidationError("The password must contain at least 6 characters.")
+        self.fields['password1'].widget.attrs.update({'class': 'password-length'})
         return password
     
 class ComentarioForm(forms.Form):

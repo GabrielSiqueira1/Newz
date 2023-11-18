@@ -170,3 +170,23 @@ body {
 .retornar:hover {
     background-color: grey;
 }
+
+/* styles.css */
+.error-box {
+    border: 1px solid #cc0000;
+    background-color: #ffeeee;
+    color: #cc0000;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.error-box strong {
+    color: #cc0000;
+}
+.error-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+.error-box li {
+    margin: 5px 0;
+}

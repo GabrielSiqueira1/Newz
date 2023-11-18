@@ -44,10 +44,22 @@
           </div>
           <div>
             {{ form.password1 }}
+            <p style="font-size:10px; margin:left;">The password must contain at least 6 characters.</p>
           </div>
           <button type="submit">Register</button>
           <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
         </form>
+        {% if form.errors %}
+            <div class="error-box">
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
       </div>
     </div>
     <div class="footer">
@@ -60,5 +72,21 @@
           </a>
       </div>
     </div>
+    <script>
+      
+      document.addEventListener("DOMContentLoaded", function () {
+          var passwordInput = document.querySelector('.password-length');
+
+          if (passwordInput) {
+              passwordInput.addEventListener('input', function () {
+                  if (this.value.length < 6) {
+                      this.style.borderColor = 'red';
+                  } else {
+                      this.style.borderColor = ''; // Reset para a cor padrão
+                  }
+              });
+          }
+      });
+  </script>
   </body>
 </html>

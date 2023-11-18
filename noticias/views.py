@@ -11,6 +11,7 @@ from dateutil import parser
 from django.contrib.auth.views import LoginView
 from .forms import CustomLoginForm
 
+API_KEY="0fccca8adf6f489fad927e1c307fc06b"
 
 def resultados_pesquisa(request):
     query = request.GET.get("q")
@@ -55,6 +56,8 @@ def signup(request):
             user = form.save()
             login(request, user)
             return HttpResponseRedirect(reverse("noticias_principais"))
+        else:
+            print(form.errors)
 
     else:
         form = CustomUserCreationForm()
@@ -188,7 +191,7 @@ def detalhes_noticia(request, url_noticia):
 
 
 def obter_noticias_da_bbc():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines"
     params = {
         "apiKey": api_key,
@@ -204,7 +207,7 @@ def obter_noticias_da_bbc():
 
 
 def obter_noticias_da_cnn():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines"
     params = {
         "apiKey": api_key,
@@ -219,7 +222,7 @@ def obter_noticias_da_cnn():
         return []
     
 def obter_noticias_da_wsj():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines"
     params = {
         "apiKey": api_key,
@@ -235,7 +238,7 @@ def obter_noticias_da_wsj():
 
 
 def obter_noticias_principais(categorias=[]):
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines?country=us"
     params = {
         "apiKey": api_key,
@@ -280,7 +283,7 @@ def noticias_wsj(request):
 # Categorias
 
 def obter_noticias_da_ciencia():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines?country=us"
     params = {
         "apiKey": api_key,
@@ -303,7 +306,7 @@ def noticias_ciencia(request):
         ciencia_noticias})
 
 def obter_noticias_da_esportes():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines?country=us"
     params = {
         "apiKey": api_key,
@@ -326,7 +329,7 @@ def noticias_esportes(request):
         esporte_noticias})
     
 def obter_noticias_da_entretenimento():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines?country=us"
     params = {
         "apiKey": api_key,
@@ -349,7 +352,7 @@ def noticias_entretenimento(request):
         entretenimento_noticias})
     
 def obter_noticias_da_saude():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines?country=us"
     params = {
         "apiKey": api_key,
@@ -372,7 +375,7 @@ def noticias_saude(request):
         saude_noticias})
 
 def obter_noticias_da_tecnologia():
-    api_key = "11f9a62b34e0465e867c2b4a400730d5"
+    api_key = API_KEY
     url = "https://newsapi.org/v2/top-headlines?country=us"
     params = {
         "apiKey": api_key,
