@@ -1,17 +1,18 @@
-body {
+.light-theme {
     margin: 0;
     padding: 0;
     user-select: none;
 }
 
-.title {
+.light-theme .title {
     clear: both;
     padding: 40px;
     font-family: 'Jost', sans-serif;
     margin-left: 125px;
+    font-size: 300%;
 }
 
-.nav-inicio {
+.light-theme .nav-inicio {
     width:100%;
     position: sticky;
     top: -15px;
@@ -22,63 +23,50 @@ body {
     align-items: center;
 }
 
-.titulo-newz {
-    text-decoration: none;
-    margin-top: -1%;
-    margin-left:45%;
-    color: black; 
-    display: flex;
-    align-items: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 300%;
-}
-
-.icon {
-    width: 50%; 
+.light-theme .icon {
+    width: 140px; 
     height: auto; 
-    max-width:50%;
+    max-width: 140px;
 }
 
-.icon2 {
+.light-theme .icon2 {
     width: 6%; 
     height: auto; 
     vertical-align: middle;
 }
 
-.left-div {
-    margin-top: 2%;
+.light-theme .left-div {
     display: flex;
+    margin-top: 1%;
     flex-direction: row;
     align-items: center;
     margin-right: auto;
     text-align:left;
 }
 
-.right-div {
-    margin-right: 10%;
-    margin-top: 2%;
+.light-theme .right-div {
+    margin-right: 7%;
     display: flex;
+    margin-top: 1%;
     flex-direction: row;
     align-items: center;
     margin-left: auto;
 }
 
-.dropbtn {
+.light-theme .dropbtn {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
-    font-size: 140%;
+    font-size: 22px;
     border: none;
+    color:black;
     background: none;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.light-theme .dropdown-content {
     min-width: 160px;
     display: none;
     position: absolute;
@@ -89,7 +77,7 @@ body {
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.light-theme .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -99,16 +87,16 @@ body {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+.light-theme .dropdown-content a:hover {
     background-color: #ddd;
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.light-theme .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.logado {
+.light-theme .logado {
     min-width: 50%;
     max-width: 50%;
     margin-left: 30px; 
@@ -121,15 +109,14 @@ body {
     flex-direction: column;
 }
 
-.logado h3 {
+.light-theme .logado h3 {
     align-self: flex-end;
     margin-bottom: -2%;
     margin-top: 0;
 }
 
-.logado a {
+.light-theme .logado a {
     margin-right: 5%;
-    text-decoration: none;
     color: black;
     margin-top: auto; /* Faz com que o link seja alinhado à parte inferior */
     align-self: flex-end; /* Justifica o link à direita */
@@ -137,7 +124,7 @@ body {
     text-align: center;
 }
 
-.logado a:hover {
+.light-theme .logado a:hover {
     text-decoration: underline;
 }
 
@@ -149,7 +136,7 @@ body {
     font-style: normal;
 }
 
-.footer {
+.light-theme .footer {
     display: flex;
     justify-content: space-between;
     padding: 10px; /* Espaçamento interno */
@@ -159,19 +146,20 @@ body {
     margin-right: 2%;
 }
 
-.footer img {
+.light-theme .footer img {
     width: 40px; 
     height: 40px; 
     margin-bottom: 20px;
 }
 
-.form-pesquisa {
+.light-theme .form-pesquisa {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-right:3  0%
 }
 
-.input-pesquisa {
+.light-theme .input-pesquisa {
     height: 40px; 
     border-radius: 10px; 
     width: 200px; 
@@ -182,13 +170,17 @@ body {
     text-indent: 10px;
  }
 
- .entrar {
+ .light-theme .entrar {
     display:flex; 
     flex-direction:row; 
     align-items:center;
  }
 
- .entrar-btn {
+ .light-theme .entrar-btn:hover{
+    background-color: rgb(167, 167, 167);
+ }
+
+.light-theme .entrar-btn {
     background: none; 
     border: none;
     border-radius: 5px;
@@ -204,7 +196,7 @@ body {
     font-weight: bold;
  }
 
- .cadastrar-btn {
+.light-theme .cadastrar-btn {
     cursor: pointer; 
     background-color:aquamarine;
     width: 90%;
@@ -220,6 +212,59 @@ body {
     font-family: 'Jost', sans-serif; 
     font-weight: bold;
  }
+
+ .light-theme .cadastrar-btn:hover{
+    cursor: pointer; 
+    background-color:rgb(38, 209, 152);
+    width: 90%;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+ }
+
+ .light-theme .titulo-newz {
+    text-decoration: none;
+    margin-top: -1%;
+    margin-left:20%;
+    color: black; 
+    display: flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 300%;
+}
+
+.light-theme #setinha{
+    content: url('../figuras/dropdown-light-theme.png')
+}
+.light-theme #logo{
+    content: url('../figuras/newz-light-theme.png')
+}
+.light-theme #git{
+    content: url('../figuras/github-light-theme.png')
+}
+.light-theme #theme-toggle{
+    content: url('../figuras/toggle-light-theme.png')
+}
+
+.light-theme #play{
+    content: url('../figuras/play-light-theme.png')
+}
+
+.light-theme .toggle{
+    width: 10%; 
+    height:auto; 
+    right: 0; 
+    left: 0;
+    float: right;
+}
 
  .imagem-noticia{
     text-align: center;
@@ -252,7 +297,7 @@ body {
     font-weight: bold;
  }
 
- .play {
+ .light-theme .play {
     width: 2%;
     height: auto;
  }
@@ -332,6 +377,7 @@ body {
     word-wrap: break-word; /* Quebra palavras longas */
     overflow-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
     max-width: 100%; /* Garante que o texto não ultrapasse a largura do contêiner pai */
+    color: black;
 }
 
 #form-comentario {
@@ -389,3 +435,221 @@ body {
 .comentario p:last-child {
     margin-bottom: 0; /* Remove a margem inferior do último parágrafo (por exemplo, "Comentário Anônimo") */
 }
+
+/* Tema escuro */   
+
+.dark-theme .toggle{
+    width: 10%; 
+    height:auto; 
+    right: 0; 
+    left: 0;
+    float: right;
+}
+
+.dark-theme #theme-toggle{
+    content: url('../figuras/toggle-dark-theme.png')
+}
+.dark-theme #setinha{
+    content: url('../figuras/dropdown-dark-theme.png')
+}
+.dark-theme #logo{
+    content: url('../figuras/newz-dark-theme.png')
+}
+.dark-theme #git{
+    content: url('../figuras/github-dark-theme.png')
+}
+
+.dark-theme #play{
+    content: url('../figuras/play-dark-theme.png')
+}
+
+.dark-theme {
+  background-color: #021421;
+  color: #fff;
+}
+
+.dark-theme .nav-inicio {
+    width:100%;
+    position: sticky;
+    top: -15px;
+    background-color: #021421;
+    z-index: 3;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dark-theme .titulo-newz {
+    text-decoration: none;
+    margin-top: -1%;
+    margin-left:20%;
+    color: white; 
+    display: flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 300%;
+}
+.dark-theme .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+}
+
+.dark-theme .logado a {
+    margin-right: 5%;
+    color: white;
+    margin-top: auto; /* Faz com que o link seja alinhado à parte inferior */
+    align-self: flex-end; /* Justifica o link à direita */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.dark-theme .dropbtn {
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold; 
+    font-size: 22px;
+    color: white;
+    border: none;
+    background: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+
+
+.dark-theme .dropdown-content {
+    min-width: 160px;
+    display: none;
+    position: absolute;
+    background-color: #03233a;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dark-theme .dropdown-content a {
+    color: whitesmoke;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+}
+
+.dark-theme .cadastrar-btn {
+    cursor: pointer; 
+    background-color:rgb(109, 0, 109);
+    width: 90%;
+    color: white;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+ }
+
+ .dark-theme .dropdown-content a:hover {
+    background-color: #777;
+}
+
+.dark-theme .cadastrar-btn:hover{
+    cursor: pointer; 
+    background-color:rgb(77, 0, 77);
+    width: 90%;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+ }
+
+ .dark-theme a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: white; /* Define a cor do texto para branco */
+}
+
+.dark-theme a:visited {
+    color: white; /* Define a cor do texto para branco para links visitados */
+}
+
+.dark-theme .entrar-btn:hover{
+    background-color: #777;
+ }
+
+.dark-theme .entrar-btn {
+    background: none; 
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    height: auto;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+    color:white
+ }
+
+ .dark-theme .icon2 {
+    width: 6%; 
+    height: auto; 
+    vertical-align: middle;
+}
+
+.dark-theme .icon {
+    width: 140px; 
+    height: auto; 
+    max-width: 140px;
+}
+
+.dark-theme .left-div {
+    display: flex;
+    margin-top: 1%;
+    flex-direction: row;
+    align-items: center;
+    margin-right: auto;
+    text-align:left;
+}
+
+.dark-theme .right-div {
+    margin-right: 7%;
+    display: flex;
+    margin-top: 1%;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+}
+
+.dark-theme .play {
+    width: 2%;
+    height: auto;
+ }
+
+ .dark-theme .noticia a {
+    text-decoration: none;
+    color:yellow;
+    font-weight: bold;
+ }
+
+ .dark-theme .noticia a:hover {
+    text-decoration: underline;
+ }

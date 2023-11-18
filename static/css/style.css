@@ -24,9 +24,9 @@
 }
 
 .light-theme .icon {
-    width: 75%; 
+    width: 140px; 
     height: auto; 
-    max-width:75%;
+    max-width: 140px;
 }
 
 .light-theme .icon2 {
@@ -36,8 +36,8 @@
 }
 
 .light-theme .left-div {
-    margin-top: 2%;
     display: flex;
+    margin-top: 1%;
     flex-direction: row;
     align-items: center;
     margin-right: auto;
@@ -46,8 +46,8 @@
 
 .light-theme .right-div {
     margin-right: 7%;
-    margin-top: 2%;
     display: flex;
+    margin-top: 1%;
     flex-direction: row;
     align-items: center;
     margin-left: auto;
@@ -56,17 +56,14 @@
 .light-theme .dropbtn {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
-    font-size: 100%;
+    font-size: 22px;
     border: none;
     color:black;
     background: none;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.light-theme .dropdown {
-    position: relative;
-    display: inline-block;
-}
+
 
 /* Dropdown Content (Hidden by Default) */
 .light-theme .dropdown-content {
@@ -146,7 +143,6 @@
 }
 
 .light-theme .noticia {
-    width: calc(33.33% - 100px); /* Define a largura desejada com margens entre os itens */
     margin-right: 0px; /* Espaço entre as notícias */
     margin-bottom: 250px; /* Espaço abaixo das notícias */
     text-align: center; /* Centralize o conteúdo dentro de cada item */
@@ -156,6 +152,7 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Centralize o conteúdo verticalmente */
+    width: 28vw;
 }
 
 .light-theme .zoom-image {
@@ -167,8 +164,8 @@
 .light-theme .imagem-container {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    height: 300px; /* Altura desejada */
+    width: 28vw;
+    height: 16vw; /* Altura desejada */
 }
 
 .light-theme .imagem-noticia {
@@ -206,9 +203,10 @@
     top: 0;
     left: 0;
     color: white; /* Cor do texto do título */
-    width: 95%; /* Tornar o título largo como a imagem */
+    width: 85%; /* Tornar o título largo como a imagem */
     margin: -140px; /* Remover margens padrão */
     text-align: center; /* Centralizar o texto do título */
+    font-size: 200%;
 }
 
 .light-theme a {
@@ -250,12 +248,13 @@
     display: flex;
     align-items: center;
     margin-bottom: 5%;
+    width: 40vw;
+    height: 11vw;
 }
 
 .light-theme .lista-noticias .nova-noticia img {
-    width: 100%;
-    max-height: 200px; /* Permite que a altura se ajuste automaticamente */
-    min-height: 200px; /* Permite que a altura se ajuste automaticamente */
+    width: 20vw;
+    height: 11vw;
     vertical-align: middle; /* Centralize verticalmente as imagens */
     border-radius: 10px;
 }
@@ -263,6 +262,7 @@
 .light-theme .lista-noticias .nova-noticia .noticia-title {
     flex: 1; /* Faz com que o texto ocupe todo o espaço restante */
     color: black;
+    font-size: 1vw;
 }
 
 .light-theme .lista-noticias .nova-noticia a {
@@ -270,6 +270,7 @@
     align-items: center;
     text-decoration: none; /* Remova a sublinhado padrão dos links */
 }
+
 
 .light-theme .lista-noticias .nova-noticia img, .lista-noticias .nova-noticia h2, .lista-noticias .nova-noticia p {
     vertical-align: middle;
@@ -417,6 +418,7 @@
     height:auto; 
     right: 0; 
     left: 0;
+    float: right;
 }
 
 /* Tema escuro */   
@@ -426,6 +428,7 @@
     height:auto; 
     right: 0; 
     left: 0;
+    float: right;
 }
 
 .dark-theme #theme-toggle{
@@ -486,6 +489,11 @@
     text-align: center;
 }
 .dark-theme .titulo-noticia {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Número de linhas que você deseja exibir antes das reticências */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
     font-family: 'Jost', sans-serif; 
     position: relative;
     text-shadow: 2px 2px 4px black;
@@ -493,13 +501,14 @@
     top: 0;
     left: 0;
     color: white; /* Cor do texto do título */
-    width: 95%; /* Tornar o título largo como a imagem */
+    width: 85%; /* Tornar o título largo como a imagem */
     margin: -140px; /* Remover margens padrão */
     text-align: center; /* Centralizar o texto do título */
 }
 .dark-theme .lista-noticias .nova-noticia .noticia-title {
     flex: 1; /* Faz com que o texto ocupe todo o espaço restante */
     color: white;
+    font-size: 1vw;
 }
 .dark-theme .lista-noticias .nova-noticia p {
     color: white;
@@ -508,23 +517,20 @@
 .dark-theme .dropbtn {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
-    font-size: 100%;
+    font-size: 22px;
     color: white;
     border: none;
     background: none;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dark-theme .dropdown {
-    position: relative;
-    display: inline-block;
-}
+
 
 .dark-theme .dropdown-content {
     min-width: 160px;
     display: none;
     position: absolute;
-    background-color: #021421;
+    background-color: #03233a;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -616,7 +622,25 @@
 }
 
 .dark-theme .icon {
-    width: 75%; 
+    width: 140px; 
     height: auto; 
-    max-width:75%;
+    max-width: 140px;
+}
+
+.dark-theme .left-div {
+    display: flex;
+    margin-top: 1%;
+    flex-direction: row;
+    align-items: center;
+    margin-right: auto;
+    text-align:left;
+}
+
+.dark-theme .right-div {
+    margin-right: 7%;
+    display: flex;
+    margin-top: 1%;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
 }
