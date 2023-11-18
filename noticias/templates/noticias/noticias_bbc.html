@@ -9,12 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="light-theme">
+    <img src="{% static 'figuras/toggle-light-theme.png' %}" alt="Alternar Tema" id="theme-toggle" class="toggle">
+
     <nav class="nav-inicio">
       <div class="left-div">
         <div>
           <a class="titulo-newz" href="{% url 'noticias_principais' %}">
-            <img src="{% static 'figuras/newz-preto.png' %}" alt="Ícone" class="icon">
+            <img src="{% static 'figuras/newz-light-theme.png' %}" alt="Ícone" class="icon" id="logo">
             newz
           </a>
         </div>
@@ -24,21 +26,21 @@
             <div class="dropdown-content">
               <a href="{% url 'noticias_bbc' %}">BBC</a>
               <a href="{% url 'noticias_cnn' %}">CNN</a>
+              <a href="{% url 'noticias_wsj' %}">WSJ</a>
             </div>
-            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
+            <img src="{% static 'figuras/dropdown-light-theme.png' %}" alt="Ícone2" class="icon2" id="setinha">
         </div>
 
         <div class="dropdown">
           <button class="dropbtn">Categories</button>
             <div class="dropdown-content">
-              <a href="{% static 'noticias_ciencia.html' %}">Science</a>
-              <a href="{% static 'noticias_empreendedorismo.html' %}">Entrepreneurship</a>
-              <a href="{% static 'noticias_esportes.html' %}">Sports</a>
-              <a href="{% static 'noticias_entretenimento.html' %}">Entertainment</a>
-              <a href="{% static 'noticias_saude.html' %}">Health</a>
-              <a href="{% static 'noticias_tecnologia.html' %}">Technology</a>
+              <a href="{% url 'noticias_ciencia' %}">Science</a>
+              <a href="{% url 'noticias_esportes' %}">Sports</a>
+              <a href="{% url 'noticias_entretenimento' %}">Entertainment</a>
+              <a href="{% url 'noticias_saude' %}">Health</a>
+              <a href="{% url 'noticias_tecnologia' %}">Technology</a>
             </div>
-            <img src="{% static 'figuras/dropdown.png' %}" alt="Ícone2" class="icon2">
+            <img src="{% static 'figuras/dropdown-light-theme.png' %}" alt="Ícone2" class="icon2" id="setinha">
         </div>
       </div>
 
@@ -59,13 +61,13 @@
         <div class="entrar">
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            <button class="entrar-btn" type="submit" onmouseover="this.style.backgroundColor='rgb(167, 167, 167)';" onmouseout="this.style.backgroundColor='white';">
+            <button class="entrar-btn" type="submit">
               Sign in
             </button>
           </form>
           <p>
             <a href="{% url 'signup' %}">
-              <button class="cadastrar-btn" onmouseover="this.style.backgroundColor='rgb(38, 209, 152)';" onmouseout="this.style.backgroundColor='aquamarine';">
+              <button class="cadastrar-btn">
                   Sign up
               </button>
             </a>
@@ -99,9 +101,26 @@
       </div>
       <div>
           <a href="https://github.com/GabrielSiqueira1/Newz">
-            <img src="{% static 'figuras/github-light-theme.png' %}" alt="icon3" class="icon3">
+            <img src="{% static 'figuras/github-light-theme.png' %}" alt="icon3" class="icon3" id="git">
           </a>
       </div>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const themeToggle = document.getElementById('theme-toggle'); // Adicione um botão de alternância com id="theme-toggle"
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme') || 'light-theme';
+      
+        body.classList.add(currentTheme);
+  
+        themeToggle.addEventListener('click', function () {
+          document.body.classList.toggle('dark-theme');
+          const newTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
+          localStorage.setItem('theme', newTheme);
+  
+        });
+        
+      });
+    </script>
   </body>
 </html>
