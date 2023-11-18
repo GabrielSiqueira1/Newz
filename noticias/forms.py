@@ -15,7 +15,7 @@ class CustomUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
         label="Senha",
         strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'placeholder': 'Password'}),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'placeholder': 'Password', 'class': 'input-senha'}),
         help_text="The password must contain at least 6 characters."
     )
     password2 = None
@@ -26,10 +26,18 @@ class CustomUserCreationForm(UserCreationForm):
 
     def clean_password1(self):
         password = self.cleaned_data.get('password1')
-        
+        print(password)
+        errors = []
         if len(password) < 6:
-            raise forms.ValidationError("The password must contain at least 6 characters.")
-        self.fields['password1'].widget.attrs.update({'class': 'password-length'})
+            errors.append("Must contain at least 6 characters")
+        if not any(char.isdigit() for char in password):
+            errors.append("Must contain a number.")
+        if not any(char.isupper() for char in password):
+            errors.append("Must contain an uppercase letter.")
+
+        if errors:
+            raise forms.ValidationError(errors)
+        
         return password
     
 class ComentarioForm(forms.Form):

@@ -15,11 +15,25 @@ API_KEY="0fccca8adf6f489fad927e1c307fc06b"
 
 def resultados_pesquisa(request):
     query = request.GET.get("q")
-    noticias = obter_noticias_principais()
-    ordenar = request.GET.get("ordenar")
+    noticias = []
+    noticias.extend(obter_noticias_principais())
+    noticias.extend(obter_noticias_da_bbc())
+    noticias.extend(obter_noticias_da_ciencia())
+    noticias.extend(obter_noticias_da_cnn())
+    noticias.extend(obter_noticias_da_entretenimento())
+    noticias.extend(obter_noticias_da_esportes())
+    noticias.extend(obter_noticias_da_saude())
+    noticias.extend(obter_noticias_da_tecnologia())
+    noticias.extend(obter_noticias_da_wsj())
+
+    # Remover duplicatas
+    noticias_sem_duplicatas = []
+    for n in noticias:
+        if n not in noticias_sem_duplicatas:
+            noticias_sem_duplicatas.append(n)
 
     resultados = []
-    for n in noticias:
+    for n in noticias_sem_duplicatas:
         if query in n.get("title"):
             resultados.append(n)
 
@@ -27,6 +41,7 @@ def resultados_pesquisa(request):
         data_publicacao = resultado["publishedAt"]
         resultado["publishedAt"] = parser.isoparse(data_publicacao)
 
+    ordenar = request.GET.get("ordenar")
     if ordenar == "desc":
         resultados = sorted(resultados, key=lambda n: n["publishedAt"], reverse=True)
     elif ordenar == "asc":
