@@ -171,22 +171,21 @@ body {
     background-color: grey;
 }
 
-/* styles.css */
-.error-box {
-    border: 1px solid #cc0000;
-    background-color: #ffeeee;
-    color: #cc0000;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 15%;
+  background-color: rgb(211, 4, 4);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin-left: 0.5%;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  margin-top: -0.5vw;
 }
-.error-box strong {
-    color: #cc0000;
-}
-.error-box ul {
-    list-style-type: none;
-    padding: 0;
-}
-.error-box li {
-    margin: 5px 0;
+
+#id_password1:focus + .tooltiptext {
+  visibility: visible;
 }
