@@ -93,6 +93,60 @@ def detalhes_noticia(request, url_noticia):
                 noticia_principal = n
                 break
 
+    if noticia_principal == None:
+        noticias = obter_noticias_da_wsj()
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get("url") == url_noticia:
+                noticia_principal = n
+                break
+    
+    if noticia_principal == None:
+        noticias = obter_noticias_da_ciencia()
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get("url") == url_noticia:
+                noticia_principal = n
+                break
+    
+    if noticia_principal == None:
+        noticias = obter_noticias_da_entretenimento()
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get("url") == url_noticia:
+                noticia_principal = n
+                break
+
+    if noticia_principal == None:
+        noticias = obter_noticias_da_esportes()
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get("url") == url_noticia:
+                noticia_principal = n
+                break
+
+    if noticia_principal == None:
+        noticias = obter_noticias_da_saude()
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get("url") == url_noticia:
+                noticia_principal = n
+                break
+
+    if noticia_principal == None:
+        noticias = obter_noticias_da_tecnologia()
+
+        noticia_principal = None
+        for n in noticias:
+            if n.get("url") == url_noticia:
+                noticia_principal = n
+                break
+
     noticias_relacionadas = []
     for n in noticias:
         if (
@@ -237,6 +291,8 @@ def obter_noticias_da_ciencia():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
         return noticias
     else:
         return []
@@ -258,6 +314,8 @@ def obter_noticias_da_esportes():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
         return noticias
     else:
         return []
@@ -279,6 +337,8 @@ def obter_noticias_da_entretenimento():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
         return noticias
     else:
         return []
@@ -300,6 +360,8 @@ def obter_noticias_da_saude():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
         return noticias
     else:
         return []
@@ -321,6 +383,8 @@ def obter_noticias_da_tecnologia():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
         return noticias
     else:
         return []
