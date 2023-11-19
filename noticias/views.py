@@ -11,7 +11,7 @@ from dateutil import parser
 from django.contrib.auth.views import LoginView
 from .forms import CustomLoginForm
 
-API_KEY="0fccca8adf6f489fad927e1c307fc06b"
+API_KEY="ecf6108a2ca9495fb45db12068e3d179"
 
 def resultados_pesquisa(request):
     query = request.GET.get("q")
