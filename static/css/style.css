@@ -219,6 +219,8 @@
 }
 
 .light-theme .footer {
+    position: absolute;
+    width: 95vw;
     display: flex;
     justify-content: space-between;
     padding: 10px; /* Espaçamento interno */

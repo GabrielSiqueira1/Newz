@@ -137,6 +137,8 @@
 }
 
 .light-theme .footer {
+    position: absolute;
+    width: 95vw;
     display: flex;
     justify-content: space-between;
     padding: 10px; /* Espaçamento interno */
@@ -327,6 +329,27 @@
     font-size: 300%;
 }
 
+.light-theme .access button {
+    background-color: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 3%;
+    border-radius: 10px;
+    margin-top: 0.5%;
+    margin-left: 0.5%;
+    float: right;
+}
+
+
+.light-theme .access img {
+    width: 70%;
+}
+
+.light-theme .access button.ativo {
+    background-color: aquamarine; /* Cor de fundo ativa */
+}
+
 .ordenar {
     display: flex;
     justify-content:end;
@@ -346,23 +369,40 @@
 .light-theme #theme-toggle{
     content: url('../figuras/toggle-light-theme.png')
 }
+.light-theme #fonte-normal{
+    content: url('../figuras/fonte-normal-light-theme.png')
+}
+.light-theme #fonte-grande{
+    content: url('../figuras/aum-fonte-light-theme.png')
+}
+.light-theme #fonte-pequena{
+    content: url('../figuras/dim-fonte-light-theme.png')
+}
 
-.light-theme .toggle{
-    width: 10%; 
+.light-theme .access .toggle{
+    width: 90px; 
     height:auto; 
     right: 0; 
     left: 0;
     float: right;
+    cursor: pointer;
+    margin-right: 2%;
+    margin-left: 1%;
+    margin-top: 0.2%;
 }
 
 /* Tema escuro */   
 
-.dark-theme .toggle{
-    width: 10%; 
+.dark-theme .access .toggle{
+    width: 100px; 
     height:auto; 
     right: 0; 
     left: 0;
     float: right;
+    cursor: pointer;
+    margin-right: 2%;
+    margin-left: 1%;
+    margin-top: 0.2%;
 }
 
 .dark-theme #theme-toggle{
@@ -376,6 +416,15 @@
 }
 .dark-theme #git{
     content: url('../figuras/github-dark-theme.png')
+}
+.dark-theme #fonte-normal{
+    content: url('../figuras/fonte-normal-dark-theme.png')
+}
+.dark-theme #fonte-grande{
+    content: url('../figuras/aum-fonte-dark-theme.png')
+}
+.dark-theme #fonte-pequena{
+    content: url('../figuras/dim-fonte-dark-theme.png')
 }
 
 .dark-theme {
@@ -568,4 +617,25 @@
     flex-direction: row;
     align-items: center;
     margin-left: auto;
+}
+
+.dark-theme .access button {
+    background-color: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 3%;
+    border-radius: 10px;
+    margin-top: 0.5%;
+    margin-left: 0.5%;
+    float: right;
+}
+
+
+.dark-theme .access img {
+    width: 70%;
+}
+
+.dark-theme .access button.ativo {
+    background-color: rgb(109, 0, 109); /* Cor de fundo ativa */
 }
