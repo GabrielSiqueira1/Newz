@@ -63,6 +63,9 @@ def custom_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse("noticias_principais"))
 
+def login_view(request):
+    form = CustomLoginForm()
+    return render(request, 'login.html', {'form': form})
 
 def signup(request):
     if request.method == "POST":
