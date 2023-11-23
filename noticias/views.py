@@ -34,7 +34,8 @@ def resultados_pesquisa(request):
 
     resultados = []
     for n in noticias_sem_duplicatas:
-        if query in n.get("title"):
+        title = n.get("title")
+        if title and (query is None or query in title):
             resultados.append(n)
 
     for resultado in resultados:
@@ -50,7 +51,7 @@ def resultados_pesquisa(request):
     return render(
         request,
         "noticias/resultados_pesquisa.html",
-        {"resultados": resultados, "query": query},
+        {"resultados": resultados, "query": query, "ordenar": ordenar},
     )
 
 

@@ -56,7 +56,7 @@
 .light-theme .dropbtn {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
-    font-size: 22px;
+    font-size: 20px;
     border: none;
     color:black;
     background: none;
@@ -555,7 +555,7 @@
 .dark-theme .dropbtn {
     font-family: 'Jost', sans-serif; 
     font-weight: bold; 
-    font-size: 22px;
+    font-size: 20px;
     color: white;
     border: none;
     background: none;

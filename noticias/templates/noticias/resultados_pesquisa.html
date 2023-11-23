@@ -85,15 +85,19 @@
         {% endif %}
         </div>
       </div>
-    </nav>
-    <!-- <div class="ordenar" >
-      <select name="ordenar" id="ordenar">
-        <option value="asc">Mais antigos primeiro</option>
-        <option value="desc">Mais recentes primeiro</option>
-      </select>
-    </div> -->
+    </nav>>
 
     <h1 class="title">Resultados da pesquisa para: "{{ query }}"</h1>
+    <div class="dropdown-ord">
+      <form method="get">
+        <input type="hidden" name="q" value="{{ query }}">
+        <button class="btn-ord">Ordernar por:</button>
+        <div class="dropdown-content-ord">
+            <button type="submit" name="ordenar" value="asc">Mais antigos primeiro</button> 
+            <button type="submit" name="ordenar" value="desc">Mais recentes primeiro</button>
+        </div>
+      </form>
+    </div>
     <div class="lista-noticias">
       {% for noticia in resultados %}
         <div class="nova-noticia">

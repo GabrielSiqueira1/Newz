@@ -65,6 +65,62 @@
 /* The container <div> - needed to position the dropdown content */
 
 
+.light-theme .dropdown-ord {
+    position: relative;
+    display: inline-block;
+  }
+
+.light-theme .dropdown-content-ord {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+.light-theme .dropdown-content-ord button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+.light-theme .dropdown-content-ord button:hover {
+    background-color: #f1f1f1;
+  }
+
+.light-theme .dropdown-ord:hover .dropdown-content-ord {
+    display: block;
+  }
+
+.light-theme .btn-ord {
+    cursor: pointer; 
+    background-color:aquamarine;
+    width: 90%;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+  }
+.light-theme .btn-ord:hover {
+    background-color: rgb(38, 209, 152);
+  }
+
+
+
 /* Dropdown Content (Hidden by Default) */
 .light-theme .dropdown-content {
     min-width: 160px;
@@ -161,6 +217,7 @@
     margin: 0 auto; /* Adicione margens automáticas à esquerda e à direita para centralizar o conteúdo */
     margin-left: 8%;
     margin-right: 8%;
+    margin-top: 30px;
 }
 
 .light-theme .sem-resultados h3 {
@@ -334,7 +391,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 3%;
+    width: 55px;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;
