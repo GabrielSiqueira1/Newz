@@ -4,10 +4,12 @@
 <html>
   <head>
     <title>Login</title>
+    <link rel="icon" type="image/png" href="{% static 'figuras/favicon.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style-login.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-cldL1l+oT4u7l81r4+Qbrj+PMS5x5zyu9SY6zocSS+QFEfuD/W8A5L0u6dDvY47qvBV9Ut1yKXClYzkO/pAT7g==" crossorigin="anonymous" />
   </head>
   <body>
     <div class="retornar-container">
@@ -33,15 +35,19 @@
         <h1>Glad you are back!</h1>
 
         <form method="post" action="{% url 'login' %}">
-          {% csrf_token %} 
+          {% csrf_token %}
           <div class="forms">
             {{ form.username }}
           </div>
-          <div>
+          <div class="forms">
             {{ form.password }}
-          </div class="forms">
+          </div>
           <button type="submit">Sign in</button>
         </form>
+
+        {% if form.errors %}
+          <p class="error-message">Incorrect username or password</p>
+        {% endif %}
 
         <p>Doesn't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
       </div>
