@@ -172,3 +172,21 @@ body {
 .retornar:hover {
     background-color: grey;
 }
+
+.error-message {
+    color: red;
+    opacity: 1;
+    animation: shake 0.5s ease-in-out; /* Adicionando animação de shake */
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0); /* Posição inicial e final (sem shake) */
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px); /* Movimento para a esquerda */
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px); /* Movimento para a direita */
+    }
+}

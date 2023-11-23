@@ -248,7 +248,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 3%;
+    width: 55px;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;
@@ -439,7 +439,7 @@
   }
 
   /* Estilos específicos para o botão de envio dentro do formulário com a classe "meu-form" */
-  #form-comentario button {
+  .light-theme #form-comentario button {
     background-color: aquamarine;
     color: black;
     padding: 10px 15px;
@@ -452,7 +452,7 @@
   }
 
   /* Adiciona um efeito de transição suave ao botão */
-#form-comentario button:hover {
+.light-theme #form-comentario button:hover {
     background-color: rgb(38, 209, 152);
 }
 
@@ -708,7 +708,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 3%;
+    width: 55px;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;
@@ -722,4 +722,20 @@
 
 .dark-theme .access button.ativo {
     background-color: rgb(109, 0, 109); /* Cor de fundo ativa */
+}
+
+.dark-theme #form-comentario button {
+    background-color: rgb(109, 0, 109);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.dark-theme #form-comentario button:hover {
+    background-color: rgb(77, 0, 77);
 }
