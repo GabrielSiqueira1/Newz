@@ -4,6 +4,7 @@
 <html>
   <head>
     <title>Esportes</title>
+    <link rel="icon" type="image/png" href="{% static 'figuras/favicon.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style-newsfilter.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,19 +72,16 @@
         </div>
         {% else %}
         <div class="entrar">
-          <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <button class="entrar-btn" type="submit">
+          <a href="{% url 'login' %}">
+            <button class="entrar-btn">
               Sign in
             </button>
-          </form>
-          <p>
-            <a href="{% url 'signup' %}">
-              <button class="cadastrar-btn">
-                  Sign up
-              </button>
-            </a>
-          </p>
+          </a>
+          <a href="{% url 'signup' %}">
+            <button class="cadastrar-btn">
+                Sign up
+            </button>
+          </a>
         {% endif %}
         </div>
       </div>
@@ -137,43 +135,69 @@
     </script>
     <script>
       const tamanhosOriginais = {};
-      const elementos = document.querySelectorAll('.dropdown, .dropbtn, .cadastrar-btn, .entrar-btn, .input-pesquisa, .noticia, .noticia-title, .title');
+      const elementos = document.querySelectorAll('.dropdown, .dropbtn, .cadastrar-btn, .entrar-btn, .input-pesquisa, .noticia, .noticia-title, .title, .logado');
       const botoes = document.querySelectorAll('button');
-  
+    
       elementos.forEach(elemento => {
-          const tamanhoInicial = parseFloat(window.getComputedStyle(elemento).fontSize);
-          tamanhosOriginais[elemento.className] = tamanhoInicial;
+        const tamanhoInicial = parseFloat(window.getComputedStyle(elemento).fontSize);
+        tamanhosOriginais[elemento.className] = tamanhoInicial;
       });
-  
+    
+      function salvarTamanhoSelecionado(tamanho) {
+        localStorage.setItem('tamanhoSelecionado', tamanho);
+      }
+    
+      function obterTamanhoSelecionado() {
+        return localStorage.getItem('tamanhoSelecionado') || 'normal';
+      }
+    
+      function aplicarTamanhoSalvo() {
+        const tamanhoSalvo = obterTamanhoSelecionado();
+        alterarFonte(tamanhoSalvo);
+    
+        // Adicionar a classe 'ativo' ao botão correspondente ao tamanho salvo
+        const botaoSalvo = document.getElementById(`btn-${tamanhoSalvo}`);
+        if (botaoSalvo) {
+          botaoSalvo.classList.add('ativo');
+        }
+      }
+    
+      // Adicionar um evento de carga para aplicar o tamanho salvo quando a página carregar
+      window.addEventListener('load', aplicarTamanhoSalvo);
+    
       function alterarFonte(tamanho) {
-          elementos.forEach(elemento => {
-              let novoTamanho;
-  
-              switch (tamanho) {
-                  case 'pequeno':
-                      novoTamanho = tamanhosOriginais[elemento.className] * 0.8;
-                      break;
-                  case 'normal':
-                      novoTamanho = tamanhosOriginais[elemento.className];
-                      break;
-                  case 'grande':
-                      novoTamanho = tamanhosOriginais[elemento.className] * 1.2;
-                      break;
-                  default:
-                      novoTamanho = tamanhosOriginais[elemento.className];
-              }
-  
-              elemento.style.fontSize = `${novoTamanho}px`;
-          });
-  
-          // Remover a classe 'ativo' de todos os botões
-          botoes.forEach(botao => {
-              botao.classList.remove('ativo');
-          });
-  
-          // Adicionar a classe 'ativo' ao botão clicado
-          const botaoClicado = document.getElementById(`btn-${tamanho}`);
+        salvarTamanhoSelecionado(tamanho); // Salvar o tamanho selecionado
+    
+        elementos.forEach(elemento => {
+          let novoTamanho;
+    
+          switch (tamanho) {
+            case 'pequeno':
+              novoTamanho = tamanhosOriginais[elemento.className] * 0.8;
+              break;
+            case 'normal':
+              novoTamanho = tamanhosOriginais[elemento.className];
+              break;
+            case 'grande':
+              novoTamanho = tamanhosOriginais[elemento.className] * 1.2;
+              break;
+            default:
+              novoTamanho = tamanhosOriginais[elemento.className];
+          }
+    
+          elemento.style.fontSize = `${novoTamanho}px`;
+        });
+    
+        // Remover a classe 'ativo' de todos os botões
+        botoes.forEach(botao => {
+          botao.classList.remove('ativo');
+        });
+    
+        // Adicionar a classe 'ativo' ao botão clicado
+        const botaoClicado = document.getElementById(`btn-${tamanho}`);
+        if (botaoClicado) {
           botaoClicado.classList.add('ativo');
+        }
       }
     </script>
   </body>
