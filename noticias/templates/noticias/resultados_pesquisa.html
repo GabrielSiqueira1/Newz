@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Resultados da Pesquisa</title>
+    <title>Search results</title>
     <link rel="icon" type="image/png" href="{% static 'figuras/favicon.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style-resultados-pesquisa.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,14 +87,15 @@
       </div>
     </nav>
 
-    <h1 class="title">Resultados da pesquisa para: "{{ query }}"</h1>
+    <h1 class="title">Search results for: "{{ query }}"</h1>
     <div class="dropdown-ord">
       <form method="get">
         <input type="hidden" name="q" value="{{ query }}">
-        <button class="btn-ord">Ordernar por:</button>
+        <button class="btn-ord">Order by</button>
+        
         <div class="dropdown-content-ord">
-            <button type="submit" name="ordenar" value="asc">Mais antigos primeiro</button> 
-            <button type="submit" name="ordenar" value="desc">Mais recentes primeiro</button>
+            <button type="submit" name="ordenar" value="asc">Oldest first</button> 
+            <button type="submit" name="ordenar" value="desc">Newest first</button>
         </div>
       </form>
     </div>

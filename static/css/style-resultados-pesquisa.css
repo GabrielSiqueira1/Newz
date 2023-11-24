@@ -103,7 +103,6 @@
 
 .light-theme .btn-ord {
     cursor: pointer; 
-    background-color:aquamarine;
     width: 90%;
     height: auto;
     border: none;
@@ -116,11 +115,12 @@
     font-size: 20px; 
     font-family: 'Jost', sans-serif; 
     font-weight: bold;
+    font-weight: bold; 
+    font-size: 22px;
+    border: none;
+    color:black;
+    background: none;
   }
-.light-theme .btn-ord:hover {
-    background-color: rgb(38, 209, 152);
-  }
-
 
 
 /* Dropdown Content (Hidden by Default) */
@@ -696,3 +696,48 @@
 .dark-theme .access button.ativo {
     background-color: rgb(109, 0, 109); /* Cor de fundo ativa */
 }
+
+.dark-theme .dropdown-content-ord {
+    background-color: #03233a;
+}
+
+.dark-theme .dropdown-content-ord button {
+    padding: 12px 16px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+.dark-theme .dropdown-content-ord button:hover {
+    background-color: #777;
+  }
+
+.dark-theme .dropdown-ord:hover .dropdown-content-ord {
+    display: block;
+  }
+
+.dark-theme .btn-ord {
+    cursor: pointer; 
+    width: 90%;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-left: 30px; 
+    margin-right: 10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-size: 20px; 
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
+    font-weight: bold; 
+    font-size: 22px;
+    border: none;
+    color:white;
+    background: none;
+  }
