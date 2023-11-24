@@ -2,6 +2,7 @@ import requests
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import Comentario
 from .forms import ComentarioForm
+from django.http import JsonResponse
 from django.contrib.auth import login, logout
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -12,6 +13,11 @@ from django.contrib.auth.views import LoginView
 from .forms import CustomLoginForm
 
 API_KEY="11f9a62b34e0465e867c2b4a400730d5"
+
+
+def obter_ultimas_noticias(request):
+    noticias = obter_noticias_principais()
+    return JsonResponse({'noticias': noticias})
 
 def resultados_pesquisa(request):
     query = request.GET.get("q")
@@ -261,7 +267,6 @@ def obter_noticias_principais(categorias=[]):
     url = "https://newsapi.org/v2/top-headlines?country=us"
     params = {
         "apiKey": api_key,
-        "category": ",".join(categorias),
         "pageSize": 100,
     }
     response = requests.get(url, params=params)

@@ -38,6 +38,7 @@ urlpatterns = [
     path('logout/', views.custom_logout, name='custom_logout'),
     path('signup/', views.signup, name='signup'),
     path('resultados_pesquisa/', views.resultados_pesquisa, name='resultados_pesquisa'),
+    path('obter_ultimas_noticias/', views.obter_ultimas_noticias, name='obter_ultimas_noticias'),
 ]
 
 if settings.DEBUG:
