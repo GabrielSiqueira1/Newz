@@ -377,7 +377,7 @@
   }
 
  .light-theme .cadastrar-btn:hover {
-    background-color:rgb(38, 209, 152);;
+    background-color:rgb(38, 209, 152);
   }
 
  .light-theme .titulo-newz {
@@ -548,6 +548,15 @@
     color: white;
     font-size: 1vw;
 }
+
+.light-theme .noticia-title p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Número de linhas que você deseja exibir antes das reticências */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
 .dark-theme .lista-noticias .nova-noticia p {
     color: white;
 }

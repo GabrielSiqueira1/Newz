@@ -185,6 +185,14 @@
     font-size: 1vw;
 }
 
+.light-theme .noticia-title p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Número de linhas que você deseja exibir antes das reticências */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
 .light-theme .lista-noticias .nova-noticia a {
     display: flex;
     align-items: center;
@@ -249,65 +257,54 @@
     text-indent: 10px;
  }
 
-.light-theme .entrar {
-    display:flex; 
-    flex-direction:row; 
-    align-items:center;
- }
+ .light-theme .entrar {
+    text-align: center;
+    display: flex;
+    cursor: auto;
+    justify-content: center; /* Alinha os botões no centro horizontalmente */
+    align-items: center; /* Alinha os botões no centro verticalmente, se necessário */
+}
 
- .light-theme .entrar-btn:hover{
+ .light-theme .entrar-btn:hover {
     background-color: rgb(167, 167, 167);
  }
 
 .light-theme .entrar-btn {
-    background: none; 
-    border: none;
-    border-radius: 5px;
-    width: 80%;
-    height: auto;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
-    font-family: 'Jost', sans-serif; 
-    font-weight: bold;
- }
+  padding: 10px 20px;
+  margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none; 
+  background: none;
+  border-radius: 5px;
+  font-weight: bold;
+  border-radius: 5px;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Jost', sans-serif; 
+}
 
 .light-theme .cadastrar-btn {
-    cursor: pointer; 
+    padding: 10px 20px;
+    margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
     background-color:aquamarine;
-    width: 90%;
-    height: auto;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
     font-family: 'Jost', sans-serif; 
     font-weight: bold;
- }
+    white-space: nowrap;
+    transition: background-color 0.3s, color 0.3s;
+  }
 
- .light-theme .cadastrar-btn:hover{
-    cursor: pointer; 
+ .light-theme .cadastrar-btn:hover {
     background-color:rgb(38, 209, 152);
-    width: 90%;
-    height: auto;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
-    font-family: 'Jost', sans-serif; 
-    font-weight: bold;
- }
+  }
 
  .light-theme .titulo-newz {
     text-decoration: none;
@@ -325,7 +322,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 3%;
+    width: 55px;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;
@@ -535,21 +532,21 @@
     background-color: #777;
 }
 
-.dark-theme .cadastrar-btn:hover{
-    cursor: pointer; 
-    background-color:rgb(77, 0, 77);
-    width: 90%;
-    height: auto;
+.dark-theme .cadastrar-btn {
+    padding: 10px 20px;
+    margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color:rgb(109, 0, 109);
     border: none;
     border-radius: 5px;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
     font-family: 'Jost', sans-serif; 
     font-weight: bold;
+    white-space: nowrap;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
  }
 
  .dark-theme .entrar-btn:hover{
@@ -557,20 +554,21 @@
  }
 
 .dark-theme .entrar-btn {
-    background: none; 
-    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none; 
+    background: none;
     border-radius: 5px;
-    width: 80%;
-    height: auto;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
-    font-family: 'Jost', sans-serif; 
     font-weight: bold;
-    color:white
+    border-radius: 5px;
+    white-space: nowrap;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Jost', sans-serif; 
  }
 
  .dark-theme .icon2 {
@@ -608,7 +606,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 3%;
+    width: 55px;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;

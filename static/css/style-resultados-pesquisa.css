@@ -74,6 +74,8 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
+    margin-left: 30px;
+    width: 180px;
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -251,6 +253,14 @@
     font-size: 1vw;
 }
 
+.light-theme .noticia-title p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Número de linhas que você deseja exibir antes das reticências */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
 .light-theme .lista-noticias .nova-noticia a {
     display: flex;
     align-items: center;
@@ -316,9 +326,11 @@
  }
 
 .light-theme .entrar {
-    display:flex; 
-    flex-direction:row; 
-    align-items:center;
+    text-align: center;
+    display: flex;
+    cursor: auto;
+    justify-content: center; /* Alinha os botões no centro horizontalmente */
+    align-items: center; /* Alinha os botões no centro verticalmente, se necessário */
  }
 
  .light-theme .entrar-btn:hover{
@@ -326,53 +338,40 @@
  }
 
 .light-theme .entrar-btn {
-    background: none; 
-    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none; 
+    background: none;
     border-radius: 5px;
-    width: 80%;
-    height: auto;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
-    font-family: 'Jost', sans-serif; 
     font-weight: bold;
+    border-radius: 5px;
+    white-space: nowrap;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Jost', sans-serif; 
  }
 
 .light-theme .cadastrar-btn {
-    cursor: pointer; 
-    background-color:aquamarine;
-    width: 90%;
-    height: auto;
+    padding: 10px 20px;
+    margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
     border: none;
     border-radius: 5px;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
+    background-color:aquamarine;
     font-family: 'Jost', sans-serif; 
     font-weight: bold;
+    white-space: nowrap;
+    transition: background-color 0.3s, color 0.3s;
  }
 
  .light-theme .cadastrar-btn:hover{
-    cursor: pointer; 
     background-color:rgb(38, 209, 152);
-    width: 90%;
-    height: auto;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
-    font-family: 'Jost', sans-serif; 
-    font-weight: bold;
  }
 
  .light-theme .titulo-newz {
@@ -608,21 +607,21 @@
     background-color: #777;
 }
 
-.dark-theme .cadastrar-btn:hover{
-    cursor: pointer; 
-    background-color:rgb(77, 0, 77);
-    width: 90%;
-    height: auto;
+.dark-theme .cadastrar-btn {
+    padding: 10px 20px;
+    margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color:rgb(109, 0, 109);
     border: none;
     border-radius: 5px;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
     font-family: 'Jost', sans-serif; 
     font-weight: bold;
+    white-space: nowrap;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
  }
 
  .dark-theme .entrar-btn:hover{
@@ -630,20 +629,21 @@
  }
 
 .dark-theme .entrar-btn {
-    background: none; 
-    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none; 
+    background: none;
     border-radius: 5px;
-    width: 80%;
-    height: auto;
-    cursor: pointer; 
-    margin-left: 30px; 
-    margin-right: 10px;
-    padding-top:20px;
-    padding-bottom:20px;
-    font-size: 20px; 
-    font-family: 'Jost', sans-serif; 
     font-weight: bold;
-    color:white
+    border-radius: 5px;
+    white-space: nowrap;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Jost', sans-serif; 
  }
 
  .dark-theme .icon2 {
@@ -681,7 +681,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 3%;
+    width: 55px;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;
