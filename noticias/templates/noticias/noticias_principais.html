@@ -91,7 +91,7 @@
 
   
     <h1 class="title">Highlights</h1>
-    <div class="noticias" id="noticias">
+    <div class="noticias">
       {% for noticia in noticias_principais %}
       {% if forloop.counter <= 6 %}
       <div class="noticia">
@@ -111,7 +111,7 @@
     </div>
 
     <h1 class="title" style="margin-top: -30px;">Latest news</h1>
-    <div class="lista-noticias" id="lista-noticias">
+    <div class="lista-noticias">
       {% for noticia in noticias_principais %}
       {% if forloop.counter > 6 %}
         <div class="nova-noticia">

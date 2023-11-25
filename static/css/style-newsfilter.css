@@ -322,7 +322,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 55px;
+    width: 3%;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;
@@ -361,7 +361,7 @@
 }
 
 .light-theme .access .toggle{
-    width: 90px; 
+    width: 5%; 
     height:auto; 
     right: 0; 
     left: 0;
@@ -606,7 +606,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 55px;
+    width: 3%;
     border-radius: 10px;
     margin-top: 0.5%;
     margin-left: 0.5%;
@@ -620,4 +620,16 @@
 
 .dark-theme .access button.ativo {
     background-color: rgb(109, 0, 109); /* Cor de fundo ativa */
+}
+
+.dark-theme .access .toggle{
+    width: 5%; 
+    height:auto; 
+    right: 0; 
+    left: 0;
+    float: right;
+    cursor: pointer;
+    margin-right: 2%;
+    margin-left: 1%;
+    margin-top: 0.2%;
 }

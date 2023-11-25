@@ -184,13 +184,36 @@
         document.addEventListener("DOMContentLoaded", function () {
           var ttsButton = document.getElementById("tts-button");
           var noticiaContent = "{{ noticia_principal.content|escapejs }}";
-
+          var speech = null; // Variável para armazenar a instância de SpeechSynthesisUtterance
+        
           ttsButton.addEventListener("click", function () {
-            var speech = new SpeechSynthesisUtterance(noticiaContent);
-            speech.lang = "EN";
+            // Verifica se já existe uma instância de SpeechSynthesisUtterance
+            if (!speech) {
+              speech = new SpeechSynthesisUtterance(noticiaContent);
+              speech.lang = "EN";
+            }
             window.speechSynthesis.speak(speech);
           });
+        
+          function handleVisibilityChange() {
+            // Pausa a leitura quando a página não está visível
+            if (document.hidden) {
+              window.speechSynthesis.cancel();
+            }
+          }
+        
+          // Adiciona um ouvinte para o evento visibilitychange
+          document.addEventListener("visibilitychange", handleVisibilityChange);
+        
+          // Adiciona um ouvinte para o evento beforeunload
+          window.addEventListener("beforeunload", function () {
+            // Pausa a leitura antes de descarregar a página
+            window.speechSynthesis.cancel();
+            // Remove o ouvinte de visibilitychange
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+          });
         });
+        
       </script>
     </div>
   </div>

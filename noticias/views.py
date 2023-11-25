@@ -226,6 +226,13 @@ def obter_noticias_da_bbc():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -242,6 +249,13 @@ def obter_noticias_da_cnn():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -257,6 +271,13 @@ def obter_noticias_da_wsj():
 
     if response.status_code == 200:
         noticias = response.json().get("articles", [])
+        noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
+        noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -275,6 +296,11 @@ def obter_noticias_principais(categorias=[]):
         noticias = response.json().get("articles", [])
         noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
         noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -320,6 +346,11 @@ def obter_noticias_da_ciencia():
         noticias = response.json().get("articles", [])
         noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
         noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -343,6 +374,11 @@ def obter_noticias_da_esportes():
         noticias = response.json().get("articles", [])
         noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
         noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -366,6 +402,11 @@ def obter_noticias_da_entretenimento():
         noticias = response.json().get("articles", [])
         noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
         noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -389,6 +430,11 @@ def obter_noticias_da_saude():
         noticias = response.json().get("articles", [])
         noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
         noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
@@ -412,6 +458,11 @@ def obter_noticias_da_tecnologia():
         noticias = response.json().get("articles", [])
         noticias = [noticia for noticia in noticias if noticia['title'] != '[Removed]' and isinstance(noticia.get('author', ''), str) and len(noticia['author']) <= 20]
         noticias = [noticia for noticia in noticias if noticia["urlToImage"]]
+        
+        for resultado in noticias:
+            data_publicacao = resultado["publishedAt"]
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        
         return noticias
     else:
         return []
