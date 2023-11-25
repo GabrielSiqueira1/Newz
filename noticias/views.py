@@ -1,6 +1,8 @@
 import requests
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import Comentario
+from dateutil import parser
+from datetime import datetime
 from .forms import ComentarioForm
 from django.http import JsonResponse
 from django.contrib.auth import login, logout
@@ -46,13 +48,18 @@ def resultados_pesquisa(request):
 
     for resultado in resultados:
         data_publicacao = resultado["publishedAt"]
-        resultado["publishedAt"] = parser.isoparse(data_publicacao)
+        if not isinstance(data_publicacao, datetime):
+            resultado["publishedAt"] = parser.isoparse(data_publicacao)
 
     ordenar = request.GET.get("ordenar")
+    def get_published_at(item):
+    # Retorna a data publicada como objeto datetime se não for do tipo datetime
+        return item["publishedAt"] if isinstance(item["publishedAt"], datetime) else parser.parse(item["publishedAt"], fuzzy=True)
+
     if ordenar == "desc":
-        resultados = sorted(resultados, key=lambda n: n["publishedAt"], reverse=True)
+        resultados = sorted(resultados, key=get_published_at, reverse=True)
     elif ordenar == "asc":
-        resultados = sorted(resultados, key=lambda n: n["publishedAt"])
+        resultados = sorted(resultados, key=get_published_at)
 
     return render(
         request,
@@ -231,7 +238,8 @@ def obter_noticias_da_bbc():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -254,7 +262,8 @@ def obter_noticias_da_cnn():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -276,7 +285,8 @@ def obter_noticias_da_wsj():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -299,7 +309,8 @@ def obter_noticias_principais(categorias=[]):
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -349,7 +360,8 @@ def obter_noticias_da_ciencia():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -377,7 +389,8 @@ def obter_noticias_da_esportes():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -405,7 +418,8 @@ def obter_noticias_da_entretenimento():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -433,7 +447,8 @@ def obter_noticias_da_saude():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
@@ -461,7 +476,8 @@ def obter_noticias_da_tecnologia():
         
         for resultado in noticias:
             data_publicacao = resultado["publishedAt"]
-            resultado["publishedAt"] = parser.isoparse(data_publicacao)
+            if not isinstance(data_publicacao, datetime):
+                resultado["publishedAt"] = parser.isoparse(data_publicacao)
         
         return noticias
     else:
