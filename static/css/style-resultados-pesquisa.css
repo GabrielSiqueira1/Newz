@@ -91,6 +91,9 @@
     background: none;
     border: none;
     cursor: pointer;
+    font-size: 100%;
+    font-family: 'Jost', sans-serif; 
+    font-weight: bold;
   }
 
 .light-theme .dropdown-content-ord button:hover {
@@ -121,6 +124,10 @@
     color:black;
     background: none;
   }
+
+.light-theme .btn-ord img {
+    width: 10px;
+}
 
 
 /* Dropdown Content (Hidden by Default) */
