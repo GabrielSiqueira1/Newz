@@ -75,7 +75,7 @@ def pagina_de_login(request):
 
 def custom_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse("noticias_principais"))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def login_view(request):
     form = CustomLoginForm()
