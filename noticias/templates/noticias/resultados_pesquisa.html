@@ -91,7 +91,11 @@
     <div class="dropdown-ord">
       <form method="get">
         <input type="hidden" name="q" value="{{ query }}">
-        <button class="btn-ord">Order by</button>
+        <button class="btn-ord">
+          Order by
+          <img src="{% static 'figuras/dropdown-light-theme.png' %}" alt="Ícone2">
+        </button>
+        
         
         <div class="dropdown-content-ord">
             <button type="submit" name="ordenar" value="asc">Oldest first</button> 
